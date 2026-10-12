@@ -1,3 +1,4 @@
+import java.io.ByteArrayOutputStream
 import java.util.Properties
 
 plugins {
@@ -6,6 +7,17 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
+
+// LibreHU: versionCode = number of commits (LibreHU OTA compares it), versionName = upstream version + git describe.
+fun git(vararg args: String): String? =
+    try {
+        val out = ByteArrayOutputStream()
+        val p = ProcessBuilder("git", *args).directory(rootDir).redirectErrorStream(true).start()
+        p.inputStream.copyTo(out)
+        if (p.waitFor() == 0) out.toString().trim() else null
+    } catch (_: Exception) {
+        null
+    }
 
 val localProps =
     Properties().apply {
@@ -21,8 +33,8 @@ android {
         applicationId = "com.llsl.viper4android"
         minSdk = 28
         targetSdk = 37
-        versionCode = 1
-        versionName = "2.1.0"
+        versionCode = git("rev-list", "--count", "HEAD")?.toIntOrNull() ?: 1
+        versionName = "2.1.0-librehu." + (git("describe", "--tags", "--always", "--dirty", "--exclude", "latest-*") ?: "dev")
     }
 
     androidResources {
@@ -51,6 +63,21 @@ android {
                 "proguard-rules.pro",
             )
         }
+    }
+
+    // LibreHU: one signing key for every LibreHU app, so that updates (LibreHU OTA) install over each other:
+    // LIBREHU_KEYSTORE* from the CI secrets when set, else keystore/librehu.jks of the repository.
+    signingConfigs {
+        create("librehu") {
+            storeFile = System.getenv("LIBREHU_KEYSTORE")?.let { file(it) } ?: rootProject.file("keystore/librehu.jks")
+            storePassword = System.getenv("LIBREHU_KEYSTORE_PASSWORD") ?: "librehu"
+            keyAlias = System.getenv("LIBREHU_KEY_ALIAS") ?: "librehu"
+            keyPassword = System.getenv("LIBREHU_KEY_PASSWORD") ?: "librehu"
+        }
+    }
+
+    buildTypes {
+        getByName("debug") { signingConfig = signingConfigs.getByName("librehu") }
     }
 
     compileOptions {
