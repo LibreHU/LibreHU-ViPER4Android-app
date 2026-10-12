@@ -7,7 +7,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -61,6 +60,7 @@ import com.llsl.viper4android.ui.screens.settings.ExcludedAppsDialog
 import com.llsl.viper4android.ui.screens.settings.SettingsDialog
 import com.llsl.viper4android.ui.screens.settings.UpdateDialog
 import com.llsl.viper4android.ui.screens.status.DriverStatusDialog
+import com.llsl.viper4android.ui.theme.LocalDarkTheme
 import com.llsl.viper4android.ui.theme.master_on_container_dark
 import com.llsl.viper4android.ui.theme.master_on_container_light
 import com.llsl.viper4android.ui.theme.master_on_onContainer_dark
@@ -350,7 +350,7 @@ fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
         },
         floatingActionButton = {
             val masterOn = state.masterEnable
-            val darkTheme = isSystemInDarkTheme()
+            val darkTheme = LocalDarkTheme.current
             val containerColor =
                 when {
                     !masterOn -> MaterialTheme.colorScheme.errorContainer
