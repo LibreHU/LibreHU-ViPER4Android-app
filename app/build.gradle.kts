@@ -1,4 +1,3 @@
-import java.io.ByteArrayOutputStream
 import java.util.Properties
 
 plugins {
@@ -9,15 +8,19 @@ plugins {
 }
 
 // LibreHU: versionCode = number of commits (LibreHU OTA compares it), versionName = upstream version + git describe.
+// Through providers.exec: the configuration cache forbids starting processes directly while configuring.
 fun git(vararg args: String): String? =
-    try {
-        val out = ByteArrayOutputStream()
-        val p = ProcessBuilder("git", *args).directory(rootDir).redirectErrorStream(true).start()
-        p.inputStream.copyTo(out)
-        if (p.waitFor() == 0) out.toString().trim() else null
-    } catch (_: Exception) {
-        null
-    }
+    runCatching {
+        providers
+            .exec {
+                commandLine("git", *args)
+                workingDir = rootDir
+                isIgnoreExitValue = true
+            }.standardOutput.asText
+            .get()
+            .trim()
+            .ifEmpty { null }
+    }.getOrNull()
 
 val localProps =
     Properties().apply {
