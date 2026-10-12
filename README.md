@@ -2,6 +2,14 @@
 
 Material Design 3 UI for ViPER4Android FX. Full feature set of the ViPER4Android DSP engine with a modern interface.
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Main screen](docs/screenshots/main.png)<br>Main screen |  |
+
+Taken on the Android 9 emulator (1280×720, 160 dpi like the head unit), without the head unit: no live values. Made by the **Screenshots** workflow of [LibreHU-OTA-app](https://github.com/LibreHU/LibreHU-OTA-app/tree/main/screenshots).
+
 ## Features
 
 ### Audio Effects
