@@ -1,5 +1,7 @@
 # ViPER4Android
 
+> **Fork LibreHU** (autoradios Jancar / Autochips AC8257) : toutes les modifications par rapport à l'amont sont listées dans [README_LIBREHU.md](README_LIBREHU.md).
+
 Material Design 3 UI for ViPER4Android FX. Full feature set of the ViPER4Android DSP engine with a modern interface.
 
 ## Screenshots
