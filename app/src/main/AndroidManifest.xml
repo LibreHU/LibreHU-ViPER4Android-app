@@ -89,5 +89,13 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- LibreHU Launcher's first start: root asked for every LibreHU app at once (RootRequestReceiver). -->
+        <receiver
+            android:name="com.llsl.viper4android.librehu.RootRequestReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="org.librehu.action.REQUEST_ROOT" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
