@@ -34,7 +34,15 @@ object FileLogger {
         val dir = File(context.filesDir, "Log")
         if (!dir.exists()) dir.mkdirs()
         logFile = File(dir, LOG_FILE_NAME)
-        openLogFile()
+        // LibreHU: an unwritable data directory (owned by an old uid after a reinstall) must not crash the app at
+        // start, before its boot receiver could start the effects: logcat only then.
+        try {
+            openLogFile()
+        } catch (e: Exception) {
+            Log.e(TAG, "Log file unavailable: ${e.message}")
+            logFile = null
+            outputStream = null
+        }
     }
 
     private fun openLogFile() {
