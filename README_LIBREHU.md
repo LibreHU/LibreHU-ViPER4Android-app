@@ -12,7 +12,7 @@ d'amont reste celui du projet (plus une section de captures d'écran sur `libreh
 
 | Branche | Contenu | Publiée par LibreHU Apps |
 |---|---|---|
-| `main` | amont + icône thémable + demande de root groupée | non |
+| `main` | amont + icône thémable + demande de root groupée + journal sans plantage | non |
 | `vehicle-audio` | `main` (ancien) + écran Audio véhicule (ivi-services de Jancar, puis LibreHU-service) | non (fusionnée dans `librehu-service`) |
 | `librehu-service` | `main` + `vehicle-audio` + thème du launcher + signature, versions et CI LibreHU | **oui** (édition LibreHU-service) |
 
@@ -26,6 +26,7 @@ Les modifications se font sur `main` (ou `vehicle-audio` pour l'écran audio), p
 | `app/src/main/AndroidManifest.xml` | méta-donnée `org.librehu.themed_icon` → `@drawable/ic_launcher_monochrome` : LibreHU Launcher dessine l'icône dans les couleurs de son thème |
 | `app/src/main/AndroidManifest.xml` | récepteur `librehu.RootRequestReceiver` (action `org.librehu.action.REQUEST_ROOT`) |
 | `app/src/main/java/com/llsl/viper4android/librehu/RootRequestReceiver.kt` | root demandé une fois pour toutes (voir plus bas) |
+| `app/src/main/java/com/llsl/viper4android/utils/FileLogger.kt` | journal fichier indisponible (dossier de données d'un ancien UID après réinstallation) : journal Android seulement au lieu d'un plantage au démarrage, avant que le récepteur de démarrage lance les effets |
 | `README_LIBREHU.md` | ce fichier |
 
 Le suivi du thème du launcher avait été essayé sur `main` (`2044b76`) puis retiré (`b45f139`) : il vit sur
