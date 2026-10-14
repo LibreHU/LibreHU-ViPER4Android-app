@@ -2,7 +2,7 @@
 
 Fork de [ViPER4Android](https://github.com/likelikeslike/ViPER4Android) (interface Material 3 de ViPER4Android FX)
 pour les autoradios Jancar / Autochips AC8257 sous LibreHU. Point de départ : le commit amont `f05926f` (« doc: Add
-priv-app SELinux rules note »). Le moteur audio (module ViPERFX_RE) n'est pas modifié ; le fork ajoute l'intégration
+priv-app SELinux rules note »), puis l'amont fusionné jusqu'à `dfcbda7` (version 2.1.1). Le moteur audio (module ViPERFX_RE) n'est pas modifié ; le fork ajoute l'intégration
 LibreHU et un écran pour le processeur audio de l'autoradio.
 
 Ce fichier liste **toutes** les modifications LibreHU par rapport à l'amont, branche par branche. Le `README.md`
@@ -65,6 +65,16 @@ chaque appli LibreHU l'une après l'autre : `RootRequestReceiver`, sur `org.libr
 paquet, lance une fois `su -c id` (SuperSU affiche la demande de ViPER, à accorder avec « Se souvenir »), puis répond
 `org.librehu.action.ROOT_RESULT` (extras `package`, `granted`) au paquet indiqué dans `reply_to`. Rien d'autre que
 `id` n'est lancé ; une seconde demande dans les 20 s est ignorée.
+
+## Version de l'appli et version du pilote
+
+L'appli envoie au démarrage et à chaque remise sur ON tout son état d'un bloc (`PARAM_SET_FULL_PARAMS`, structure
+`viper::ViPERParams`). Le pilote ViPERFX_RE le refuse si la taille diffère de la sienne
+(`value.byte_count != sizeof(viper::ViPERParams)` dans `ViPER.cpp`) : aucun effet n'est alors appliqué, et seuls
+les réglages touchés un par un passent. L'appli et le pilote doivent donc être de la même version. Le zip
+`viper4android-re` de LibreHU-flashablesZips installe le pilote **v2.1.1** (structure de 1156 octets, avec le
+« quadric tube simulator ») : l'appli suit l'amont jusqu'à la 2.1.1 (`dfcbda7`). Une appli restée en 2.1.0
+(1144 octets) donnait « effets cochés mais non appliqués » après un redémarrage ou un OFF / ON.
 
 ## Suivre l'amont
 
