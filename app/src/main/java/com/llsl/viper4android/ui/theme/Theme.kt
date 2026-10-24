@@ -73,10 +73,11 @@ fun ViperTheme(
     content: @Composable () -> Unit,
 ) {
     val libreHuAccent = rememberLibreHuAccent()
+    val retro = rememberLibreHuRetro()
     val colorScheme =
         when {
             libreHuAccent != null -> {
-                libreHuColorScheme(darkTheme, libreHuAccent)
+                libreHuColorScheme(darkTheme, libreHuAccent, retro)
             }
 
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -96,6 +97,7 @@ fun ViperTheme(
     CompositionLocalProvider(LocalDarkTheme provides darkTheme) {
         MaterialTheme(
             colorScheme = colorScheme,
+            typography = libreHuTypography(retro.takeIf { libreHuAccent != null }),
             content = content,
         )
     }

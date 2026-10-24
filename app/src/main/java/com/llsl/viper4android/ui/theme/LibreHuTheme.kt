@@ -10,6 +10,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -22,6 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.core.content.ContextCompat
 
 /** Effective dark theme of the app, provided by [ViperTheme]. */
@@ -115,18 +118,111 @@ fun rememberLibreHuAccent(): Int? {
     return accent
 }
 
-/** Car palette of the LibreHU apps, every Material role on the launcher accent (default blue when it is 0). */
+/**
+ * Retro style of LibreHU Launcher (VFD amber, green LCD, cassette) with its palette: provider columns / broadcast
+ * extras `style` (`retro_…`), `background`, `surface`, `surface_high`, `accent`, `on_accent`, `text`, `text_dim`.
+ */
+data class LibreHuRetro(
+    val dark: Boolean,
+    val colors: List<Color>,
+)
+
+private val RETRO_COLORS = listOf("background", "surface", "surface_high", "accent", "on_accent", "text", "text_dim")
+
+private fun readLauncherRetro(context: Context): LibreHuRetro? =
+    try {
+        context.contentResolver.query(LAUNCHER_THEME_URI, null, null, null, null)?.use { c ->
+            if (!c.moveToFirst()) return@use null
+            val style = c.getString(c.getColumnIndexOrThrow("style"))
+            if (style == null || !style.startsWith("retro")) return@use null
+            LibreHuRetro(c.getInt(0) != 0, RETRO_COLORS.map { Color(c.getInt(c.getColumnIndexOrThrow(it))) })
+        }
+    } catch (_: Exception) {
+        null
+    }
+
+private fun retroFrom(intent: Intent): LibreHuRetro? {
+    val style = intent.getStringExtra("style")
+    if (style == null || !style.startsWith("retro") || RETRO_COLORS.any { !intent.hasExtra(it) }) return null
+    return LibreHuRetro(intent.getBooleanExtra("dark", true), RETRO_COLORS.map { Color(intent.getIntExtra(it, 0)) })
+}
+
+/** LibreHU Launcher's retro style, kept up to date like the theme; null for the modern look or without the launcher. */
+@Composable
+fun rememberLibreHuRetro(): LibreHuRetro? {
+    val context = LocalContext.current
+    var retro by remember { mutableStateOf(readLauncherRetro(context)) }
+    DisposableEffect(context) {
+        val receiver =
+            object : BroadcastReceiver() {
+                override fun onReceive(
+                    c: Context,
+                    intent: Intent,
+                ) {
+                    retro = retroFrom(intent)
+                }
+            }
+        val observer =
+            object : ContentObserver(Handler(Looper.getMainLooper())) {
+                override fun onChange(selfChange: Boolean) {
+                    retro = readLauncherRetro(context)
+                }
+            }
+        ContextCompat.registerReceiver(context, receiver, IntentFilter(ACTION_THEME_CHANGED), ContextCompat.RECEIVER_EXPORTED)
+        try {
+            context.contentResolver.registerContentObserver(LAUNCHER_THEME_URI, false, observer)
+        } catch (_: SecurityException) {
+        }
+        onDispose {
+            context.unregisterReceiver(receiver)
+            context.contentResolver.unregisterContentObserver(observer)
+        }
+    }
+    return retro
+}
+
+/** Segment display font of the launcher's retro styles (LibreHU Seg14: DSEG14, capitals without accents, SIL OFL 1.1). */
+fun libreHuTypography(retro: LibreHuRetro?): Typography {
+    if (retro == null) return Typography()
+    val f = FontFamily(Font(com.llsl.viper4android.R.font.librehu_seg14))
+    return Typography().run {
+        copy(
+            displayLarge = displayLarge.copy(fontFamily = f),
+            displayMedium = displayMedium.copy(fontFamily = f),
+            displaySmall = displaySmall.copy(fontFamily = f),
+            headlineLarge = headlineLarge.copy(fontFamily = f),
+            headlineMedium = headlineMedium.copy(fontFamily = f),
+            headlineSmall = headlineSmall.copy(fontFamily = f),
+            titleLarge = titleLarge.copy(fontFamily = f),
+            titleMedium = titleMedium.copy(fontFamily = f),
+            titleSmall = titleSmall.copy(fontFamily = f),
+            bodyLarge = bodyLarge.copy(fontFamily = f),
+            bodyMedium = bodyMedium.copy(fontFamily = f),
+            bodySmall = bodySmall.copy(fontFamily = f),
+            labelLarge = labelLarge.copy(fontFamily = f),
+            labelMedium = labelMedium.copy(fontFamily = f),
+            labelSmall = labelSmall.copy(fontFamily = f),
+        )
+    }
+}
+
+/**
+ * Car palette of the LibreHU apps, every Material role on the launcher accent (default blue when it is 0); the
+ * launcher's retro palette instead when its style is retro (same light / dark).
+ */
 fun libreHuColorScheme(
     dark: Boolean,
     accentArgb: Int,
+    retro: LibreHuRetro? = null,
 ): ColorScheme {
-    val accent = if (accentArgb != 0) Color(accentArgb) else Color(if (dark) 0xFF8AB4F8 else 0xFF1A73E8)
-    val background = if (dark) Color(0xFF000000) else Color(0xFFF1F3F4)
-    val surface = if (dark) Color(0xFF1E1F22) else Color(0xFFFFFFFF)
-    val high = if (dark) Color(0xFF2B2D31) else Color(0xFFE8EAED)
-    val onAccent = if (dark) Color(0xFF202124) else Color(0xFFFFFFFF)
-    val text = if (dark) Color(0xFFE8EAED) else Color(0xFF202124)
-    val dim = if (dark) Color(0xFF9AA0A6) else Color(0xFF5F6368)
+    val r = retro?.takeIf { it.dark == dark }?.colors
+    val accent = r?.get(3) ?: if (accentArgb != 0) Color(accentArgb) else Color(if (dark) 0xFF8AB4F8 else 0xFF1A73E8)
+    val background = r?.get(0) ?: if (dark) Color(0xFF000000) else Color(0xFFF1F3F4)
+    val surface = r?.get(1) ?: if (dark) Color(0xFF1E1F22) else Color(0xFFFFFFFF)
+    val high = r?.get(2) ?: if (dark) Color(0xFF2B2D31) else Color(0xFFE8EAED)
+    val onAccent = r?.get(4) ?: if (dark) Color(0xFF202124) else Color(0xFFFFFFFF)
+    val text = r?.get(5) ?: if (dark) Color(0xFFE8EAED) else Color(0xFF202124)
+    val dim = r?.get(6) ?: if (dark) Color(0xFF9AA0A6) else Color(0xFF5F6368)
     val container = lerp(surface, accent, 0.30f)
     val base = if (dark) darkColorScheme() else lightColorScheme()
     return base.copy(
