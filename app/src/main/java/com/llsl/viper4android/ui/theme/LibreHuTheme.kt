@@ -119,12 +119,14 @@ fun rememberLibreHuAccent(): Int? {
 }
 
 /**
- * Retro style of LibreHU Launcher (VFD amber, green LCD, cassette) with its palette: provider columns / broadcast
- * extras `style` (`retro_…`), `background`, `surface`, `surface_high`, `accent`, `on_accent`, `text`, `text_dim`.
+ * Retro style and font of LibreHU Launcher: provider columns / broadcast extras `style` (`retro`: [colors] = its
+ * palette `background`, `surface`, `surface_high`, `accent`, `on_accent`, `text`, `text_dim`; null otherwise) and
+ * `font` (`segment`: the segment display font, any style).
  */
 data class LibreHuRetro(
     val dark: Boolean,
-    val colors: List<Color>,
+    val colors: List<Color>?,
+    val segment: Boolean,
 )
 
 private val RETRO_COLORS = listOf("background", "surface", "surface_high", "accent", "on_accent", "text", "text_dim")
@@ -133,18 +135,26 @@ private fun readLauncherRetro(context: Context): LibreHuRetro? =
     try {
         context.contentResolver.query(LAUNCHER_THEME_URI, null, null, null, null)?.use { c ->
             if (!c.moveToFirst()) return@use null
-            val style = c.getString(c.getColumnIndexOrThrow("style"))
-            if (style == null || !style.startsWith("retro")) return@use null
-            LibreHuRetro(c.getInt(0) != 0, RETRO_COLORS.map { Color(c.getInt(c.getColumnIndexOrThrow(it))) })
+            val style = c.getColumnIndex("style").takeIf { it >= 0 }?.let { c.getString(it) }
+            val retro = style?.startsWith("retro") == true
+            val font = c.getColumnIndex("font").takeIf { it >= 0 }?.let { c.getString(it) }
+            LibreHuRetro(
+                c.getInt(0) != 0,
+                if (retro) RETRO_COLORS.map { Color(c.getInt(c.getColumnIndexOrThrow(it))) } else null,
+                font?.let { it == "segment" } ?: retro,
+            )
         }
     } catch (_: Exception) {
         null
     }
 
-private fun retroFrom(intent: Intent): LibreHuRetro? {
-    val style = intent.getStringExtra("style")
-    if (style == null || !style.startsWith("retro") || RETRO_COLORS.any { !intent.hasExtra(it) }) return null
-    return LibreHuRetro(intent.getBooleanExtra("dark", true), RETRO_COLORS.map { Color(intent.getIntExtra(it, 0)) })
+private fun retroFrom(intent: Intent): LibreHuRetro {
+    val retro = intent.getStringExtra("style")?.startsWith("retro") == true && RETRO_COLORS.all { intent.hasExtra(it) }
+    return LibreHuRetro(
+        intent.getBooleanExtra("dark", true),
+        if (retro) RETRO_COLORS.map { Color(intent.getIntExtra(it, 0)) } else null,
+        intent.getStringExtra("font")?.let { it == "segment" } ?: retro,
+    )
 }
 
 /** LibreHU Launcher's retro style, kept up to date like the theme; null for the modern look or without the launcher. */
@@ -181,9 +191,9 @@ fun rememberLibreHuRetro(): LibreHuRetro? {
     return retro
 }
 
-/** Segment display font of the launcher's retro styles (LibreHU Seg14: DSEG14, capitals without accents, SIL OFL 1.1). */
+/** Segment display font when chosen in the launcher (LibreHU Seg14: DSEG14, capitals without accents, SIL OFL 1.1). */
 fun libreHuTypography(retro: LibreHuRetro?): Typography {
-    if (retro == null) return Typography()
+    if (retro?.segment != true) return Typography()
     val f = FontFamily(Font(com.llsl.viper4android.R.font.librehu_seg14))
     return Typography().run {
         copy(
