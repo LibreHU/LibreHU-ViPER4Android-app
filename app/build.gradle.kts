@@ -28,6 +28,9 @@ val localProps =
         if (f.exists()) f.inputStream().use(::load)
     }
 
+// "-<branch>" at the end of versionName: the branch (edition) the APK was built from (GITHUB_REF_NAME in the CI).
+fun branchName(): String = System.getenv("GITHUB_REF_NAME")?.takeIf { it.isNotBlank() } ?: git("rev-parse", "--abbrev-ref", "HEAD") ?: "local"
+
 android {
     namespace = "com.llsl.viper4android"
     compileSdk = 37
@@ -37,7 +40,7 @@ android {
         minSdk = 28
         targetSdk = 37
         versionCode = git("rev-list", "--count", "HEAD")?.toIntOrNull() ?: 1
-        versionName = "2.1.1-librehu." + (git("describe", "--tags", "--always", "--dirty", "--exclude", "latest-*", "--exclude", "build-*") ?: "dev")
+        versionName = "2.1.1-librehu." + (git("describe", "--tags", "--always", "--dirty", "--exclude", "latest-*", "--exclude", "build-*") ?: "dev") + "-" + branchName()
     }
 
     androidResources {
