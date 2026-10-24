@@ -224,3 +224,10 @@ To help with translations, follow the [template guide](app/res-template/values-t
 
 - RU: [@maurerdv](https://github.com/maurerdv)
 - ZH-CN: [@Arissekai](https://github.com/Arissekai)
+
+## Appli téléphone (LibreHU Bridge)
+
+Réglable depuis le téléphone par l'appli LibreHU Bridge (Android et iPhone), à travers LibreHU-service : l'interrupteur général et, pour chaque effet, **tous** ses paramètres (tirés de la liste des effets de l'appli, avec leurs plages : un nouveau paramètre apparaît de lui-même) ; l'état est enregistré comme par l'appli et le service le réapplique. Restent sur l'autoradio : préréglages, fichiers DDC et de convolution.
+Fournisseur `<paquet>.bridge` (`bridge/BridgeProvider.kt`), réservé aux applis signées avec la clé LibreHU (permission
+`org.librehu.permission.BRIDGE`, vérifiée dans `call()` lui-même) ; format décrit dans
+[LibreHU-service, docs/bridge.md](https://github.com/LibreHU/LibreHU-service/blob/main/docs/bridge.md).
