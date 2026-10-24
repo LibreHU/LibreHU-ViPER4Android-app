@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vehicle_title">Audio du véhicule</string>
+    <string name="vehicle_open">Audio du véhicule</string>
+    <string name="vehicle_back">Retour</string>
+    <string name="vehicle_reload">Relire depuis l\'autoradio</string>
+    <string name="vehicle_reset">Valeurs par défaut</string>
+    <string name="vehicle_center">Centrer</string>
+    <string name="vehicle_not_supported">LibreHU-service introuvable. Cet écran règle le processeur audio d\'un autoradio Jancar / Autochips (ROHM BD37534) à travers LibreHU-service : https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Connexion à LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service ne pilote pas le matériel (%1$s). Les réglages sont enregistrés et appliqués à son démarrage. Si les ivi-services de Jancar sont encore actifs, désactivez-les : adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Contact coupé : le processeur audio reste muet.</string>
+    <string name="section_vehicle_volume">Volume</string>
+    <string name="section_vehicle_fader">Fader / balance</string>
+    <string name="section_vehicle_tone">Tonalité</string>
+    <string name="section_vehicle_sub">Loudness et caisson de basses</string>
+    <string name="section_vehicle_ext_amp">Ampli externe</string>
+    <string name="label_vehicle_volume">Volume général</string>
+    <string name="label_vehicle_mute">Muet</string>
+    <string name="label_vehicle_balance">Balance (gauche / droite)</string>
+    <string name="label_vehicle_fade">Fader (avant / arrière)</string>
+    <string name="label_vehicle_bass">Graves</string>
+    <string name="label_vehicle_middle">Médiums</string>
+    <string name="label_vehicle_treble">Aigus</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Niveau du caisson</string>
+    <string name="label_vehicle_sub_switch">Sortie caisson</string>
+    <string name="label_vehicle_ext_amp">Activer l\'ampli externe</string>
+    <string name="desc_vehicle_volume">Volume général du processeur audio de l\'autoradio, après Android et ViPER. Il s\'applique à toutes les sources.</string>
+    <string name="desc_vehicle_fader">Répartit le son entre les quatre haut-parleurs. C\'est le processeur audio de l\'autoradio qui le fait, après Android et ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balance&lt;/b&gt; — gauche / droite.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — avant / arrière.</string>
+    <string name="desc_vehicle_tone">Graves, médiums et aigus du processeur audio de l\'autoradio (2 dB par cran). Ils s\'appliquent à toutes les sources, alors que les effets ViPER ne traitent que le son d\'Android.</string>
+    <string name="desc_vehicle_sub">Loudness (graves et aigus renforcés à bas volume), sortie caisson (passe-bas à 120 Hz) et niveau du caisson (−5 à +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Allume la sortie de commande (REM) qui met en route un ampli externe, souvent le fil bleu / blanc du faisceau. LibreHU-service l\'allume avec le contact quand elle est activée.</string>
+</resources>
