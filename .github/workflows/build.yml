@@ -41,15 +41,23 @@ jobs:
             echo "LIBREHU_KEYSTORE=$RUNNER_TEMP/librehu.jks" >> "$GITHUB_ENV"
           fi
 
-      - name: Build (debug)
-        run: ./gradlew --no-daemon assembleDebug
+      - name: Build APK (release, R8)
+        run: ./gradlew --no-daemon :app:assembleRelease
 
       - name: Artefact APK
         uses: actions/upload-artifact@v4
         with:
-          name: ViPER4Android-LibreHU-debug-${{ github.sha }}
-          path: app/build/outputs/apk/debug/*.apk
+          name: ViPER4Android-LibreHU-${{ github.sha }}
+          path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
+
+      - name: Upload the R8 reports
+        # usage.txt lists the code R8 removed (first place to look for a "class / method not found" crash).
+        uses: actions/upload-artifact@v4
+        with:
+          name: ViPER4Android-LibreHU-r8-${{ github.sha }}
+          path: app/build/outputs/mapping/release/
+          if-no-files-found: warn
 
       - name: Rolling release of the branch (LibreHU OTA)
         if: github.event_name == 'push'
@@ -61,7 +69,7 @@ jobs:
           SLUG="${BRANCH//\//-}"
           TAG="latest-$SLUG"
           OUT="$APP-$SLUG.apk"
-          cp "$(ls app/build/outputs/apk/debug/*.apk | head -n1)" "$OUT"
+          cp "$(ls app/build/outputs/apk/release/*.apk | head -n1)" "$OUT"
           CODE=$(git rev-list --count HEAD)
           NAME=$(git describe --tags --always --exclude 'latest-*' --exclude 'build-*')
           printf 'versionCode=%s\nversionName=%s\nbranch=%s\ncommit=%s\n\n%s\n' \

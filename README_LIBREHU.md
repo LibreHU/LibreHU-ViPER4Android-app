@@ -24,7 +24,8 @@ Les modifications se font sur `main` (ou `vehicle-audio` pour l'écran audio), p
 | Fichier | Modification |
 |---|---|
 | `app/src/main/AndroidManifest.xml` | méta-donnée `org.librehu.themed_icon` → `@drawable/ic_launcher_monochrome` : LibreHU Launcher dessine l'icône dans les couleurs de son thème |
-| `app/src/main/AndroidManifest.xml` | récepteur `librehu.RootRequestReceiver` (action `org.librehu.action.REQUEST_ROOT`) |
+| `app/src/main/AndroidManifest.xml` | récepteur `librehu.RootRequestReceiver` (action `org.librehu.action.REQUEST_ROOT`, permission de signature `org.librehu.permission.ROOT_REQUEST` déclarée ici aussi : seule une appli signée avec la clé LibreHU peut l'envoyer) |
+| `app/build.gradle.kts`, `app/proguard-rules.pro`, `.github/workflows/build.yml` | APK publié en **release** optimisée par R8 (sans renommage, `-dontobfuscate`), signée avec la clé LibreHU ; avant, une build debug de 70 Mo |
 | `app/src/main/java/com/llsl/viper4android/librehu/RootRequestReceiver.kt` | root demandé une fois pour toutes (voir plus bas) |
 | `app/src/main/java/com/llsl/viper4android/utils/FileLogger.kt` | journal fichier indisponible (dossier de données d'un ancien UID après réinstallation) : journal Android seulement au lieu d'un plantage au démarrage, avant que le récepteur de démarrage lance les effets |
 | `README_LIBREHU.md` | ce fichier |

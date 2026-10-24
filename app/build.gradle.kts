@@ -56,18 +56,6 @@ android {
         }
     }
 
-    buildTypes {
-        release {
-            signingConfig = if (keystoreFile.isNotEmpty()) signingConfigs.getByName("release") else null
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-    }
-
     // LibreHU: one signing key for every LibreHU app, so that updates (LibreHU OTA) install over each other:
     // LIBREHU_KEYSTORE* from the CI secrets when set, else keystore/librehu.jks of the repository.
     signingConfigs {
@@ -76,6 +64,19 @@ android {
             storePassword = System.getenv("LIBREHU_KEYSTORE_PASSWORD") ?: "librehu"
             keyAlias = System.getenv("LIBREHU_KEY_ALIAS") ?: "librehu"
             keyPassword = System.getenv("LIBREHU_KEY_PASSWORD") ?: "librehu"
+        }
+    }
+
+    buildTypes {
+        release {
+            // LibreHU: the shared LibreHU key (signingConfigs "librehu" above) unless a local keystore is given.
+            signingConfig = if (keystoreFile.isNotEmpty()) signingConfigs.getByName("release") else signingConfigs.getByName("librehu")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 
