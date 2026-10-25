@@ -237,3 +237,14 @@ Fournisseur `<paquet>.bridge` (`bridge/BridgeProvider.kt`), réservé aux applis
 
 Libellés de l'appli et écran « Audio du véhicule » en français (`res/values-fr`), aussi utilisés par les pages de l'appli
 téléphone LibreHU. Les textes d'aide des effets restent en anglais.
+
+## Soutenir le projet
+
+LibreHU est développé bénévolement, sur le temps libre, et toutes ses applis restent gratuites. Si le projet vous est
+utile, vous pouvez le soutenir par un don sur [Liberapay](https://liberapay.com/DokT/donate) (association française à
+but non lucratif, dons récurrents) :
+
+[![Faire un don avec Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/DokT/donate)
+[![Donateurs sur Liberapay](https://img.shields.io/liberapay/patrons/DokT.svg?logo=liberapay)](https://liberapay.com/DokT/)
+
+Ces dons vont au projet LibreHU, pas aux auteurs de ViPER4Android : pour les soutenir, voir leur dépôt.
