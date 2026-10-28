@@ -84,6 +84,7 @@ import com.llsl.viper4android.effect.compressorRatioToRaw
 import com.llsl.viper4android.effect.compressorRawToDb
 import com.llsl.viper4android.effect.compressorRawToRatio
 import com.llsl.viper4android.effect.compressorSecondsToMs
+import com.llsl.viper4android.librehu.LauncherLook
 import com.llsl.viper4android.ui.components.ConfirmDialog
 import com.llsl.viper4android.ui.components.EqCurveGraph
 import com.llsl.viper4android.ui.components.EqEditDialog
@@ -150,6 +151,8 @@ fun EffectSection(
             CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
             ),
+        // LibreHU: framed like LibreHU Launcher's panels in its car styles.
+        border = LauncherLook.cardBorder(),
     ) {
         Column {
             Row(

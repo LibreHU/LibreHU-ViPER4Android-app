@@ -9,6 +9,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
+import com.llsl.viper4android.librehu.LauncherLook
 
 private val LightColorScheme =
     lightColorScheme(
@@ -77,7 +78,7 @@ fun ViperTheme(
     val colorScheme =
         when {
             libreHuAccent != null -> {
-                libreHuColorScheme(darkTheme, libreHuAccent, retro)
+                LauncherLook.styledScheme(libreHuColorScheme(darkTheme || LauncherLook.styled, libreHuAccent, retro))
             }
 
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -98,6 +99,7 @@ fun ViperTheme(
         MaterialTheme(
             colorScheme = colorScheme,
             typography = libreHuTypography(retro.takeIf { libreHuAccent != null }),
+            shapes = LauncherLook.shapes(MaterialTheme.shapes),
             content = content,
         )
     }

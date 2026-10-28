@@ -7,11 +7,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -46,6 +49,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
@@ -54,6 +58,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.llsl.viper4android.R
 import com.llsl.viper4android.effect.EffectState
 import com.llsl.viper4android.headunit.LibreHuClient
+import com.llsl.viper4android.librehu.LauncherLook
 import com.llsl.viper4android.ui.components.UiDimens
 import com.llsl.viper4android.ui.screens.debug.DebugLogDialog
 import com.llsl.viper4android.ui.screens.device.DeviceDialog
@@ -287,81 +292,85 @@ fun MainScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Column {
-                        Text(stringResource(R.string.app_name))
-                        val deviceName = state.activeDeviceName
-                        if (deviceName.isNotEmpty()) {
-                            val dotColor =
-                                if (state.masterEnable) {
-                                    status_active_green
-                                } else {
-                                    MaterialTheme.colorScheme.onSurfaceVariant
+            // LibreHU: in LibreHU Launcher's car styles, a black bar over a line of the accent colour.
+            Column {
+                TopAppBar(
+                    title = {
+                        Column {
+                            Text(stringResource(R.string.app_name))
+                            val deviceName = state.activeDeviceName
+                            if (deviceName.isNotEmpty()) {
+                                val dotColor =
+                                    if (state.masterEnable) {
+                                        status_active_green
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    }
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Canvas(modifier = Modifier.size(UiDimens.Small)) {
+                                        drawCircle(dotColor)
+                                    }
+                                    Spacer(modifier = Modifier.width(UiDimens.Small))
+                                    Text(
+                                        text = deviceName,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    )
                                 }
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Canvas(modifier = Modifier.size(UiDimens.Small)) {
-                                    drawCircle(dotColor)
-                                }
-                                Spacer(modifier = Modifier.width(UiDimens.Small))
-                                Text(
-                                    text = deviceName,
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            }
+                        }
+                    },
+                    colors =
+                        TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        ),
+                    actions = {
+                        if (debugMode) {
+                            IconButton(onClick = { showDebugLog = true }) {
+                                Icon(
+                                    Icons.Default.BugReport,
+                                    contentDescription = stringResource(R.string.debug_log_title),
                                 )
                             }
                         }
-                    }
-                },
-                colors =
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    ),
-                actions = {
-                    if (debugMode) {
-                        IconButton(onClick = { showDebugLog = true }) {
+                        if (headUnitSupported) {
+                            IconButton(onClick = onOpenVehicle) {
+                                Icon(
+                                    Icons.Filled.DirectionsCar,
+                                    contentDescription = stringResource(R.string.vehicle_open),
+                                )
+                            }
+                        }
+                        IconButton(onClick = { showDeviceDialog = true }) {
                             Icon(
-                                Icons.Default.BugReport,
-                                contentDescription = stringResource(R.string.debug_log_title),
+                                Icons.Filled.SpeakerGroup,
+                                contentDescription = stringResource(R.string.menu_devices),
                             )
                         }
-                    }
-                    if (headUnitSupported) {
-                        IconButton(onClick = onOpenVehicle) {
+                        IconButton(onClick = { showDriverStatusDialog = true }) {
                             Icon(
-                                Icons.Filled.DirectionsCar,
-                                contentDescription = stringResource(R.string.vehicle_open),
+                                Icons.Default.Info,
+                                contentDescription = stringResource(R.string.menu_driver_status),
                             )
                         }
-                    }
-                    IconButton(onClick = { showDeviceDialog = true }) {
-                        Icon(
-                            Icons.Filled.SpeakerGroup,
-                            contentDescription = stringResource(R.string.menu_devices),
-                        )
-                    }
-                    IconButton(onClick = { showDriverStatusDialog = true }) {
-                        Icon(
-                            Icons.Default.Info,
-                            contentDescription = stringResource(R.string.menu_driver_status),
-                        )
-                    }
-                    IconButton(onClick = { showPresetDialog = true }) {
-                        Icon(
-                            Icons.Default.LibraryMusic,
-                            contentDescription = stringResource(R.string.menu_presets),
-                        )
-                    }
-                    IconButton(onClick = { showSettingsDialog = true }) {
-                        Icon(
-                            Icons.Default.Settings,
-                            contentDescription = stringResource(R.string.menu_settings),
-                        )
-                    }
-                },
-            )
+                        IconButton(onClick = { showPresetDialog = true }) {
+                            Icon(
+                                Icons.Default.LibraryMusic,
+                                contentDescription = stringResource(R.string.menu_presets),
+                            )
+                        }
+                        IconButton(onClick = { showSettingsDialog = true }) {
+                            Icon(
+                                Icons.Default.Settings,
+                                contentDescription = stringResource(R.string.menu_settings),
+                            )
+                        }
+                    },
+                )
+                LauncherLook.accentLine()?.let { Box(Modifier.fillMaxWidth().height(2.dp).background(it)) }
+            }
         },
         floatingActionButton = {
             val masterOn = state.masterEnable

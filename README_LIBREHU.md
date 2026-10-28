@@ -52,6 +52,9 @@ alors que les effets ViPER ne traitent que l'audio d'Android.
 | Fichier | Modification |
 |---|---|
 | `…/ui/theme/LibreHuTheme.kt`, `…/ui/theme/Theme.kt` | clair / sombre et couleur d'accent de LibreHU Launcher (`content://org.librehu.launcher.theme/theme`, diffusion `org.librehu.action.THEME_CHANGED`), donc sombre avec les phares quand le launcher est en automatique |
+| `…/librehu/LauncherLook.kt`, `…/ui/theme/Theme.kt` | **styles de LibreHU Launcher** (colonne / extra `style` : `factory` = Modularer Infotainment-Baukasten, `ambient` = LHU-Link) : fond et barre de titre noirs, panneaux presque noirs, coins carrés, le launcher choisit (rien à régler dans ViPER) |
+| `…/ui/screens/main/MainScreen.kt`, `…/ui/screens/main/EffectSections.kt` | dans ces styles, filet de la couleur d'accent sous la barre de titre et cadre autour des cartes d'effets (accent en LHU-Link, gris foncé en Modularer Infotainment-Baukasten) |
+| `…/librehu/KeyClick.kt`, `…/ui/MainActivity.kt`, `app/src/main/res/raw/click_*.wav`, `third_party/` | **son des touches** choisi dans le launcher (colonne / extra `click`, `off` = aucun) ; 26 sons : LibreHU (synthétisés), Kenney « Interface Sounds » (CC0, [kenney.nl](https://kenney.nl/assets/interface-sounds), WAV de [Calinou/kenney-interface-sounds](https://github.com/Calinou/kenney-interface-sounds) par Hugo Locurcio), AOSP (Apache 2.0) ; détails dans `third_party/KEYCLICK-SOUNDS.md` |
 | `app/build.gradle.kts` | signature par la clé commune des applis LibreHU (`keystore/librehu.jks`), `versionCode` = nombre de commits (lu par `providers.exec`, compatible cache de configuration) |
 | `keystore/` | clé de signature commune et son README |
 | `.github/workflows/build.yml` | CI : APK signé, pré-version roulante par branche avec `release.txt` (version lue par LibreHU OTA), 15 dernières versions gardées |
