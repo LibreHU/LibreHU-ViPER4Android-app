@@ -27,6 +27,8 @@ Les modifications se font sur `main` (ou `vehicle-audio` pour l'écran audio), p
 | `app/src/main/AndroidManifest.xml` | récepteur `librehu.RootRequestReceiver` (action `org.librehu.action.REQUEST_ROOT`, permission de signature `org.librehu.permission.ROOT_REQUEST` déclarée ici aussi : seule une appli signée avec la clé LibreHU peut l'envoyer) |
 | `app/build.gradle.kts`, `app/proguard-rules.pro`, `.github/workflows/build.yml` | APK publié en **release** optimisée par R8 (sans renommage, `-dontobfuscate`), signée avec la clé LibreHU ; avant, une build debug de 70 Mo |
 | `app/src/main/java/com/llsl/viper4android/librehu/RootRequestReceiver.kt` | root demandé une fois pour toutes (voir plus bas) |
+| `app/src/main/java/com/llsl/viper4android/librehu/Su.kt` | arguments de `su` : `su -c`, ou `su 0 sh -c` pour le vieux `su` d'AOSP (voir plus bas) |
+| `app/src/main/java/com/llsl/viper4android/utils/RootShell.kt` | essaie aussi `su 0 sh -c` quand `su -c` est refusé par le vieux `su` d'AOSP |
 | `app/src/main/java/com/llsl/viper4android/utils/FileLogger.kt` | journal fichier indisponible (dossier de données d'un ancien UID après réinstallation) : journal Android seulement au lieu d'un plantage au démarrage, avant que le récepteur de démarrage lance les effets |
 | `README_LIBREHU.md` | ce fichier |
 
@@ -66,9 +68,14 @@ alors que les effets ViPER ne traitent que l'audio d'Android.
 Les fonctions root de ViPER (journal de débogage, etc.) passent par SuperSU, qui accorde le root appli par appli.
 L'assistant de premier démarrage de LibreHU Launcher (« Autoriser le root pour toutes les applis LibreHU ») interroge
 chaque appli LibreHU l'une après l'autre : `RootRequestReceiver`, sur `org.librehu.action.REQUEST_ROOT` envoyé à ce
-paquet, lance une fois `su -c id` (SuperSU affiche la demande de ViPER, à accorder avec « Se souvenir »), puis répond
+paquet, lance une fois `id` par `su` (SuperSU affiche la demande de ViPER, à accorder avec « Se souvenir »), puis répond
 `org.librehu.action.ROOT_RESULT` (extras `package`, `granted`) au paquet indiqué dans `reply_to`. Rien d'autre que
 `id` n'est lancé ; une seconde demande dans les 20 s est ignorée.
+
+Le vieux `su` d'AOSP de certaines ROM Jancar (`/system/xbin/su` : `su [UID [COMMANDE…]]`) refuse `-c` avec « invalid
+uid/gid » : `RootRequestReceiver` passe par `librehu/Su.kt` (`su -c id`, ou `su 0 sh -c id` pour ce `su`, reconnu une fois
+par `su -v`, sans demande de root) et `utils/RootShell.kt` (code amont, modifié : marqué `LibreHU fork`) essaie
+`su 0 sh -c id` quand `su -c id` reçoit ce refus, puis garde cette forme.
 
 ## Version de l'appli et version du pilote
 

@@ -13,12 +13,17 @@ object RootShell {
     @Volatile
     private var suDetected = false
 
+    /** LibreHU fork: the detected su is the old su of AOSP (`su UID COMMAND`), which has no -c. */
+    @Volatile
+    private var uidForm = false
+
     fun exec(
         command: String,
         timeoutSec: Long = SU_TIMEOUT_SEC,
     ): Process {
         val su = getSuPath()
-        val process = Runtime.getRuntime().exec(arrayOf(su, "-c", command))
+        val args = if (uidForm) arrayOf(su, "0", "sh", "-c", command) else arrayOf(su, "-c", command)
+        val process = Runtime.getRuntime().exec(args)
         if (!process.waitFor(timeoutSec, TimeUnit.SECONDS)) {
             process.destroyForcibly()
             throw RuntimeException("su command timed out after ${timeoutSec}s: $command")
@@ -77,18 +82,28 @@ object RootShell {
     }
 
     private fun testSu(path: String): Boolean {
-        return try {
-            val process = Runtime.getRuntime().exec(arrayOf(path, "-c", "id"))
-            val completed = process.waitFor(5, TimeUnit.SECONDS)
-            if (!completed) {
-                process.destroyForcibly()
-                return false
-            }
-            if (process.exitValue() != 0) return false
-            val output = process.inputStream.bufferedReader().readText()
-            output.contains("uid=0")
-        } catch (_: Exception) {
-            false
-        }
+        val (ok, output) = runId(arrayOf(path, "-c", "id"))
+        if (ok) return true
+        // LibreHU fork: the old su of AOSP that some head unit ROMs ship (Jancar's /system/xbin/su) reads -c as a user
+        // and stops with "invalid uid/gid" before running anything; it takes `su 0 sh -c COMMAND`.
+        if (!output.contains("invalid uid/gid", ignoreCase = true)) return false
+        if (!runId(arrayOf(path, "0", "sh", "-c", "id")).first) return false
+        uidForm = true
+        return true
     }
+
+    /** True when [args] printed uid 0, with what they printed (output and errors). */
+    private fun runId(args: Array<String>): Pair<Boolean, String> =
+        try {
+            val process = Runtime.getRuntime().exec(args)
+            if (!process.waitFor(5, TimeUnit.SECONDS)) {
+                process.destroyForcibly()
+                false to ""
+            } else {
+                val output = process.inputStream.bufferedReader().readText() + process.errorStream.bufferedReader().readText()
+                (process.exitValue() == 0 && output.contains("uid=0")) to output
+            }
+        } catch (_: Exception) {
+            false to ""
+        }
 }
