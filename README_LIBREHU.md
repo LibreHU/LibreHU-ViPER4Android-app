@@ -86,3 +86,7 @@ git checkout librehu-service && git merge main
 ```
 
 Licence : celle du projet amont (voir `LICENSE`).
+
+## Contact
+
+[librehu@proton.me](mailto:librehu@proton.me)
