@@ -105,3 +105,7 @@ sans accents (« LibreHU Seg14 », tirée de DSEG14 © keshikan, SIL Open Font L
 `third_party/DSEG-LICENSE.txt`). Le launcher publie le style, la police et la palette par
 `content://org.librehu.launcher.theme/theme` (colonnes `style`, `font`, `background`, `surface`, `surface_high`,
 `on_accent`, `text`, `text_dim`) et par la diffusion `org.librehu.action.THEME_CHANGED` (mêmes noms en extras).
+
+## Contact
+
+[librehu@proton.me](mailto:librehu@proton.me)
