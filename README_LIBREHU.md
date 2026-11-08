@@ -2,7 +2,7 @@
 
 Fork de [ViPER4Android](https://github.com/likelikeslike/ViPER4Android) (interface Material 3 de ViPER4Android FX)
 pour les autoradios Jancar / Autochips AC8257 sous LibreHU. Point de départ : le commit amont `f05926f` (« doc: Add
-priv-app SELinux rules note »), puis l'amont fusionné jusqu'à `dfcbda7` (version 2.1.1). Le moteur audio (module ViPERFX_RE) n'est pas modifié ; le fork ajoute l'intégration
+priv-app SELinux rules note »), puis l'amont fusionné jusqu'à `14491ed` (version 2.1.1 et le correctif du 08/11/2026 : réglages de l'appareil actif appliqués au démarrage du service). Le moteur audio (module ViPERFX_RE) n'est pas modifié ; le fork ajoute l'intégration
 LibreHU et un écran pour le processeur audio de l'autoradio.
 
 Ce fichier liste **toutes** les modifications LibreHU par rapport à l'amont, branche par branche. Le `README.md`
