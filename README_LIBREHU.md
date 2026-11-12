@@ -27,6 +27,8 @@ Les modifications se font sur `main` (ou `vehicle-audio` pour l'écran audio), p
 | `app/src/main/AndroidManifest.xml` | récepteur `librehu.RootRequestReceiver` (action `org.librehu.action.REQUEST_ROOT`) |
 | `app/src/main/java/com/llsl/viper4android/librehu/RootRequestReceiver.kt` | root demandé une fois pour toutes (voir plus bas) |
 | `app/src/main/java/com/llsl/viper4android/utils/FileLogger.kt` | journal fichier indisponible (dossier de données d'un ancien UID après réinstallation) : journal Android seulement au lieu d'un plantage au démarrage, avant que le récepteur de démarrage lance les effets |
+| `app/src/main/AndroidManifest.xml` | alias `.librehu.SoundSettingsEntry` de l'écran principal (action `com.android.settings.action.EXTRA_SETTINGS`, rubrique `com.android.settings.category.ia.sound`) : entrée « ViPER4Android » dans la page Son des Paramètres d'Android, qui ne montre que celles des applis système (ROM LineageOS de LibreHU) ; icône `ic_qs_master` teintée |
+| `app/src/main/res/values/strings_librehu.xml`, `values-fr/strings_librehu.xml` | résumé de cette entrée (anglais, français) |
 | `README_LIBREHU.md` | ce fichier |
 
 Le suivi du thème du launcher avait été essayé sur `main` (`2044b76`) puis retiré (`b45f139`) : il vit sur
