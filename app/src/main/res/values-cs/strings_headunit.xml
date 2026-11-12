@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Czech translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Zvuk vozidla</string>
+    <string name="vehicle_open">Zvuk vozidla</string>
+    <string name="vehicle_back">Zpět</string>
+    <string name="vehicle_reload">Znovu načíst z autorádia</string>
+    <string name="vehicle_reset">Výchozí hodnoty</string>
+    <string name="vehicle_center">Na střed</string>
+    <string name="vehicle_not_supported">LibreHU-service nenalezena. Tato obrazovka ovládá zvukový procesor autorádia Jancar / Autochips (ROHM BD37534) přes LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Připojování k LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service neovládá hardware (%1$s). Nastavení se uloží a použije při jejím spuštění. Pokud jsou ivi-services od Jancaru stále aktivní, vypněte je: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Zapalování vypnuto: zvukový procesor zůstává ztlumený.</string>
+    <string name="section_vehicle_volume">Hlasitost</string>
+    <string name="section_vehicle_fader">Fader / vyvážení</string>
+    <string name="section_vehicle_tone">Tónové korekce</string>
+    <string name="section_vehicle_sub">Loudness a subwoofer</string>
+    <string name="section_vehicle_ext_amp">Externí zesilovač</string>
+    <string name="label_vehicle_volume">Hlavní hlasitost</string>
+    <string name="label_vehicle_mute">Ztlumit</string>
+    <string name="label_vehicle_balance">Vyvážení (vlevo / vpravo)</string>
+    <string name="label_vehicle_fade">Fader (vpředu / vzadu)</string>
+    <string name="label_vehicle_bass">Basy</string>
+    <string name="label_vehicle_middle">Středy</string>
+    <string name="label_vehicle_treble">Výšky</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Úroveň subwooferu</string>
+    <string name="label_vehicle_sub_switch">Výstup subwooferu</string>
+    <string name="label_vehicle_ext_amp">Zapnout externí zesilovač</string>
+    <string name="desc_vehicle_volume">Hlavní hlasitost zvukového procesoru autorádia, za Androidem a ViPER. Platí pro všechny zdroje.</string>
+    <string name="desc_vehicle_fader">Rozděluje zvuk mezi čtyři reproduktory. Dělá to zvukový procesor autorádia, za Androidem a ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Vyvážení&lt;/b&gt; — vlevo / vpravo.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — vpředu / vzadu.</string>
+    <string name="desc_vehicle_tone">Basy, středy a výšky zvukového procesoru autorádia (2 dB na krok). Platí pro všechny zdroje, na rozdíl od efektů ViPER, které zpracovávají jen zvuk Androidu.</string>
+    <string name="desc_vehicle_sub">Loudness (zesílené basy a výšky při nízké hlasitosti), výstup subwooferu (dolní propust 120 Hz) a úroveň subwooferu (−5 až +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Zapne řídicí výstup (REM), který spouští externí zesilovač, obvykle modrobílý vodič svazku. LibreHU-service ho zapíná se zapalováním, když je povolen.</string>
+</resources>

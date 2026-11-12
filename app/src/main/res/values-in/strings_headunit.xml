@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Indonesian translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Audio kendaraan</string>
+    <string name="vehicle_open">Audio kendaraan</string>
+    <string name="vehicle_back">Kembali</string>
+    <string name="vehicle_reload">Baca ulang dari head unit</string>
+    <string name="vehicle_reset">Nilai bawaan</string>
+    <string name="vehicle_center">Tengahkan</string>
+    <string name="vehicle_not_supported">LibreHU-service tidak ditemukan. Layar ini mengatur prosesor audio head unit Jancar / Autochips (ROHM BD37534) melalui LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Menghubungkan ke LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service tidak mengendalikan perangkat keras (%1$s). Setelan disimpan dan diterapkan saat layanan dimulai. Jika ivi-services dari Jancar masih aktif, nonaktifkan: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Kontak mati: prosesor audio tetap senyap.</string>
+    <string name="section_vehicle_volume">Volume</string>
+    <string name="section_vehicle_fader">Fader / balance</string>
+    <string name="section_vehicle_tone">Nada</string>
+    <string name="section_vehicle_sub">Loudness dan subwoofer</string>
+    <string name="section_vehicle_ext_amp">Amplifier eksternal</string>
+    <string name="label_vehicle_volume">Volume utama</string>
+    <string name="label_vehicle_mute">Bisukan</string>
+    <string name="label_vehicle_balance">Balance (kiri / kanan)</string>
+    <string name="label_vehicle_fade">Fader (depan / belakang)</string>
+    <string name="label_vehicle_bass">Bass</string>
+    <string name="label_vehicle_middle">Middle</string>
+    <string name="label_vehicle_treble">Treble</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Level subwoofer</string>
+    <string name="label_vehicle_sub_switch">Keluaran subwoofer</string>
+    <string name="label_vehicle_ext_amp">Aktifkan power amplifier eksternal</string>
+    <string name="desc_vehicle_volume">Volume utama prosesor audio head unit, setelah Android dan ViPER. Berlaku untuk semua sumber.</string>
+    <string name="desc_vehicle_fader">Membagi suara ke empat speaker. Ini dilakukan oleh prosesor audio head unit, setelah Android dan ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balance&lt;/b&gt; — kiri / kanan.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — depan / belakang.</string>
+    <string name="desc_vehicle_tone">Pengaturan bass, middle, dan treble prosesor audio head unit (2 dB per langkah). Berlaku untuk semua sumber, berbeda dengan efek ViPER yang hanya memproses audio Android.</string>
+    <string name="desc_vehicle_sub">Loudness (bass dan treble diperkuat pada volume rendah), keluaran subwoofer (low-pass 120 Hz) dan level subwoofer (−5 hingga +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Menyalakan keluaran remote (REM) yang menghidupkan amplifier eksternal, biasanya kabel biru/putih pada harness. Jika diaktifkan, LibreHU-service menyalakannya bersama kontak.</string>
+</resources>

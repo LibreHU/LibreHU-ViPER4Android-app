@@ -352,4 +352,8 @@
     <string name="ds_device_high_end_headphone_v1">高端耳机 (v1)</string>
     <string name="ds_device_common_headphone_v1">普通耳机 (v1)</string>
     <string name="ds_device_common_earphone_v1">普通耳塞 (v1)</string>
+    <!-- LibreHU: labels of the phone app (bridge/BridgeProvider). -->
+    <string name="bridge_enable">开启</string>
+    <string name="bridge_band">频段</string>
+    <string name="bridge_device">设备</string>
 </resources>

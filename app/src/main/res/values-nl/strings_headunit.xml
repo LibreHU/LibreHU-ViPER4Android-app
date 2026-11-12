@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dutch translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Voertuigaudio</string>
+    <string name="vehicle_open">Voertuigaudio</string>
+    <string name="vehicle_back">Terug</string>
+    <string name="vehicle_reload">Opnieuw lezen van de autoradio</string>
+    <string name="vehicle_reset">Standaardwaarden</string>
+    <string name="vehicle_center">Centreren</string>
+    <string name="vehicle_not_supported">LibreHU-service niet gevonden. Dit scherm regelt de audioprocessor van een Jancar / Autochips-autoradio (ROHM BD37534) via LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Verbinden met LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service stuurt de hardware niet aan (%1$s). Instellingen worden bewaard en toegepast zodra hij start. Als Jancars ivi-services nog actief zijn, schakel ze uit: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Contact uit: de audioprocessor blijft gedempt.</string>
+    <string name="section_vehicle_volume">Volume</string>
+    <string name="section_vehicle_fader">Fader / balans</string>
+    <string name="section_vehicle_tone">Toon</string>
+    <string name="section_vehicle_sub">Loudness en subwoofer</string>
+    <string name="section_vehicle_ext_amp">Externe versterker</string>
+    <string name="label_vehicle_volume">Hoofdvolume</string>
+    <string name="label_vehicle_mute">Dempen</string>
+    <string name="label_vehicle_balance">Balans (links / rechts)</string>
+    <string name="label_vehicle_fade">Fader (voor / achter)</string>
+    <string name="label_vehicle_bass">Lage tonen</string>
+    <string name="label_vehicle_middle">Middentonen</string>
+    <string name="label_vehicle_treble">Hoge tonen</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Subwooferniveau</string>
+    <string name="label_vehicle_sub_switch">Subwooferuitgang</string>
+    <string name="label_vehicle_ext_amp">Externe versterker inschakelen</string>
+    <string name="desc_vehicle_volume">Hoofdvolume van de audioprocessor van de autoradio, na Android en ViPER. Het geldt voor elke bron.</string>
+    <string name="desc_vehicle_fader">Verdeelt het geluid over de vier luidsprekers. Dat doet de audioprocessor van de autoradio, na Android en ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balans&lt;/b&gt; — links / rechts.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — voor / achter.</string>
+    <string name="desc_vehicle_tone">Lage, midden- en hoge tonen van de audioprocessor van de autoradio (2 dB per stap). Ze gelden voor elke bron, anders dan de ViPER-effecten die alleen Android-audio bewerken.</string>
+    <string name="desc_vehicle_sub">Loudness (lage en hoge tonen versterkt bij laag volume), subwooferuitgang (laagdoorlaat op 120 Hz) en subwooferniveau (−5 tot +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Zet de remote-uitgang (REM) aan die een externe versterker inschakelt, meestal de blauw/witte draad van de kabelboom. LibreHU-service zet hem aan met het contact wanneer dit ingeschakeld is.</string>
+</resources>

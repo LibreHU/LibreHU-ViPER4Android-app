@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ukrainian translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Звук автомобіля</string>
+    <string name="vehicle_open">Звук автомобіля</string>
+    <string name="vehicle_back">Назад</string>
+    <string name="vehicle_reload">Перечитати з магнітоли</string>
+    <string name="vehicle_reset">Типові значення</string>
+    <string name="vehicle_center">По центру</string>
+    <string name="vehicle_not_supported">LibreHU-service не знайдено. Цей екран керує аудіопроцесором магнітоли Jancar / Autochips (ROHM BD37534) через LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Під\'єднання до LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service не керує обладнанням (%1$s). Налаштування зберігаються й застосовуються під час його запуску. Якщо ivi-services від Jancar ще ввімкнені, вимкніть їх: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Запалювання вимкнено: аудіопроцесор без звуку.</string>
+    <string name="section_vehicle_volume">Гучність</string>
+    <string name="section_vehicle_fader">Фейдер / баланс</string>
+    <string name="section_vehicle_tone">Тембр</string>
+    <string name="section_vehicle_sub">Тонкомпенсація й сабвуфер</string>
+    <string name="section_vehicle_ext_amp">Зовнішній підсилювач</string>
+    <string name="label_vehicle_volume">Загальна гучність</string>
+    <string name="label_vehicle_mute">Без звуку</string>
+    <string name="label_vehicle_balance">Баланс (ліво / право)</string>
+    <string name="label_vehicle_fade">Фейдер (перед / зад)</string>
+    <string name="label_vehicle_bass">Низькі</string>
+    <string name="label_vehicle_middle">Середні</string>
+    <string name="label_vehicle_treble">Високі</string>
+    <string name="label_vehicle_loudness">Тонкомпенсація</string>
+    <string name="label_vehicle_subwoofer">Рівень сабвуфера</string>
+    <string name="label_vehicle_sub_switch">Вихід на сабвуфер</string>
+    <string name="label_vehicle_ext_amp">Вмикати зовнішній підсилювач</string>
+    <string name="desc_vehicle_volume">Загальна гучність аудіопроцесора магнітоли, після Android і ViPER. Діє для всіх джерел.</string>
+    <string name="desc_vehicle_fader">Розподіляє звук між чотирма динаміками. Це робить аудіопроцесор магнітоли, після Android і ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Баланс&lt;/b&gt; — ліво / право.&lt;br&gt;• &lt;b&gt;Фейдер&lt;/b&gt; — перед / зад.</string>
+    <string name="desc_vehicle_tone">Низькі, середні й високі частоти аудіопроцесора магнітоли (2 дБ на крок). Діють для всіх джерел, на відміну від ефектів ViPER, які обробляють лише звук Android.</string>
+    <string name="desc_vehicle_sub">Тонкомпенсація (посилення низьких і високих на малій гучності), вихід на сабвуфер (ФНЧ 120 Гц) і рівень сабвуфера (від −5 до +7 дБ).</string>
+    <string name="desc_vehicle_ext_amp">Вмикає керувальний вихід (REM), що запускає зовнішній підсилювач, зазвичай синьо-білий провід джгута. LibreHU-service вмикає його разом із запалюванням, якщо опцію ввімкнено.</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Georgian translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">ავტომობილის ხმა</string>
+    <string name="vehicle_open">ავტომობილის ხმა</string>
+    <string name="vehicle_back">უკან</string>
+    <string name="vehicle_reload">მაგნიტოლიდან ხელახლა წაკითხვა</string>
+    <string name="vehicle_reset">ნაგულისხმევი მნიშვნელობები</string>
+    <string name="vehicle_center">ცენტრში</string>
+    <string name="vehicle_not_supported">LibreHU-service ვერ მოიძებნა. ეს ეკრანი LibreHU-service-ის მეშვეობით არეგულირებს Jancar / Autochips მაგნიტოლის აუდიოპროცესორს (ROHM BD37534): https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">LibreHU-service-თან დაკავშირება…</string>
+    <string name="vehicle_not_running">LibreHU-service აპარატურას არ მართავს (%1$s). პარამეტრები ინახება და გამოიყენება მისი გაშვებისას. თუ Jancar-ის ivi-services ჯერ კიდევ ჩართულია, გამორთეთ: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">ანთება გამორთულია: აუდიოპროცესორი დადუმებულია.</string>
+    <string name="section_vehicle_volume">ხმის სიმაღლე</string>
+    <string name="section_vehicle_fader">ფეიდერი / ბალანსი</string>
+    <string name="section_vehicle_tone">ტემბრი</string>
+    <string name="section_vehicle_sub">ლაუდნესი და საბვუფერი</string>
+    <string name="section_vehicle_ext_amp">გარე გამაძლიერებელი</string>
+    <string name="label_vehicle_volume">საერთო ხმა</string>
+    <string name="label_vehicle_mute">დადუმება</string>
+    <string name="label_vehicle_balance">ბალანსი (მარცხენა / მარჯვენა)</string>
+    <string name="label_vehicle_fade">ფეიდერი (წინა / უკანა)</string>
+    <string name="label_vehicle_bass">დაბლები</string>
+    <string name="label_vehicle_middle">საშუალოები</string>
+    <string name="label_vehicle_treble">მაღლები</string>
+    <string name="label_vehicle_loudness">ლაუდნესი</string>
+    <string name="label_vehicle_subwoofer">საბვუფერის დონე</string>
+    <string name="label_vehicle_sub_switch">საბვუფერის გამოსასვლელი</string>
+    <string name="label_vehicle_ext_amp">გარე სიმძლავრის გამაძლიერებლის ჩართვა</string>
+    <string name="desc_vehicle_volume">მაგნიტოლის აუდიოპროცესორის საერთო ხმა, Android-ისა და ViPER-ის შემდეგ. მოქმედებს ყველა წყაროზე.</string>
+    <string name="desc_vehicle_fader">ანაწილებს ხმას ოთხ დინამიკს შორის. ამას აკეთებს მაგნიტოლის აუდიოპროცესორი, Android-ისა და ViPER-ის შემდეგ.&lt;br&gt;&lt;br&gt;• &lt;b&gt;ბალანსი&lt;/b&gt; — მარცხენა / მარჯვენა.&lt;br&gt;• &lt;b&gt;ფეიდერი&lt;/b&gt; — წინა / უკანა.</string>
+    <string name="desc_vehicle_tone">მაგნიტოლის აუდიოპროცესორის დაბლები, საშუალოები და მაღლები (ბიჯზე 2 dB). მოქმედებს ყველა წყაროზე, ViPER-ის ეფექტებისგან განსხვავებით, რომლებიც მხოლოდ Android-ის ხმას ამუშავებენ.</string>
+    <string name="desc_vehicle_sub">ლაუდნესი (დაბლებისა და მაღლების გაძლიერება დაბალ ხმაზე), საბვუფერის გამოსასვლელი (დაბალგამტარი 120 Hz) და საბვუფერის დონე (−5-დან +7 dB-მდე).</string>
+    <string name="desc_vehicle_ext_amp">რთავს მართვის გამოსასვლელს (REM), რომელიც გარე გამაძლიერებელს რთავს, ჩვეულებრივ აღკაზმულობის ლურჯ-თეთრ სადენს. ჩართვისას LibreHU-service მას ანთებასთან ერთად რთავს.</string>
+</resources>

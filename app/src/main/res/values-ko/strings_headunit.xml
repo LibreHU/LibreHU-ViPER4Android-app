@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Korean translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">차량 오디오</string>
+    <string name="vehicle_open">차량 오디오</string>
+    <string name="vehicle_back">뒤로</string>
+    <string name="vehicle_reload">헤드 유닛에서 다시 읽기</string>
+    <string name="vehicle_reset">기본값으로</string>
+    <string name="vehicle_center">가운데로</string>
+    <string name="vehicle_not_supported">LibreHU-service를 찾을 수 없습니다. 이 화면은 LibreHU-service를 통해 Jancar / Autochips 헤드 유닛(ROHM BD37534)의 오디오 프로세서를 제어합니다: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">LibreHU-service에 연결 중…</string>
+    <string name="vehicle_not_running">LibreHU-service가 하드웨어를 제어하고 있지 않습니다(%1$s). 설정은 저장되었다가 서비스가 시작되면 적용됩니다. Jancar ivi-services가 아직 켜져 있다면 끄세요: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">시동 꺼짐: 오디오 프로세서가 음소거 상태입니다.</string>
+    <string name="section_vehicle_volume">볼륨</string>
+    <string name="section_vehicle_fader">페이더 / 밸런스</string>
+    <string name="section_vehicle_tone">톤</string>
+    <string name="section_vehicle_sub">라우드니스 및 서브우퍼</string>
+    <string name="section_vehicle_ext_amp">외부 앰프</string>
+    <string name="label_vehicle_volume">마스터 볼륨</string>
+    <string name="label_vehicle_mute">음소거</string>
+    <string name="label_vehicle_balance">밸런스(왼쪽 / 오른쪽)</string>
+    <string name="label_vehicle_fade">페이더(앞 / 뒤)</string>
+    <string name="label_vehicle_bass">저음</string>
+    <string name="label_vehicle_middle">중음</string>
+    <string name="label_vehicle_treble">고음</string>
+    <string name="label_vehicle_loudness">라우드니스</string>
+    <string name="label_vehicle_subwoofer">서브우퍼 레벨</string>
+    <string name="label_vehicle_sub_switch">서브우퍼 출력</string>
+    <string name="label_vehicle_ext_amp">외부 파워 앰프 사용</string>
+    <string name="desc_vehicle_volume">Android와 ViPER 뒤에 오는 헤드 유닛 오디오 프로세서의 마스터 볼륨입니다. 모든 소스에 적용됩니다.</string>
+    <string name="desc_vehicle_fader">소리를 네 개의 스피커에 나눠 보냅니다. Android와 ViPER 뒤에서 헤드 유닛 오디오 프로세서가 처리합니다.&lt;br&gt;&lt;br&gt;• &lt;b&gt;밸런스&lt;/b&gt; — 왼쪽 / 오른쪽.&lt;br&gt;• &lt;b&gt;페이더&lt;/b&gt; — 앞 / 뒤.</string>
+    <string name="desc_vehicle_tone">헤드 유닛 오디오 프로세서의 저음, 중음, 고음 조절(단계당 2 dB)입니다. Android 오디오만 처리하는 ViPER 효과와 달리 모든 소스에 적용됩니다.</string>
+    <string name="desc_vehicle_sub">라우드니스(낮은 볼륨에서 저음과 고음 보강), 서브우퍼 출력(120 Hz 로우패스), 서브우퍼 레벨(−5 ~ +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">외부 앰프를 켜는 리모트(REM) 출력을 켭니다. 보통 배선 하네스의 파란색/흰색 선입니다. 사용으로 설정하면 LibreHU-service가 시동과 함께 켭니다.</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Romanian translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Audio vehicul</string>
+    <string name="vehicle_open">Audio vehicul</string>
+    <string name="vehicle_back">Înapoi</string>
+    <string name="vehicle_reload">Recitește din unitatea multimedia</string>
+    <string name="vehicle_reset">Valori implicite</string>
+    <string name="vehicle_center">Centrează</string>
+    <string name="vehicle_not_supported">LibreHU-service nu a fost găsit. Acest ecran reglează procesorul audio al unei unități multimedia Jancar / Autochips (ROHM BD37534) prin LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Conectare la LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service nu controlează hardware-ul (%1$s). Setările sunt salvate și aplicate când pornește. Dacă ivi-services de la Jancar sunt încă active, dezactivează-le: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Contact oprit: procesorul audio rămâne pe mut.</string>
+    <string name="section_vehicle_volume">Volum</string>
+    <string name="section_vehicle_fader">Fader / balans</string>
+    <string name="section_vehicle_tone">Ton</string>
+    <string name="section_vehicle_sub">Loudness și subwoofer</string>
+    <string name="section_vehicle_ext_amp">Amplificator extern</string>
+    <string name="label_vehicle_volume">Volum general</string>
+    <string name="label_vehicle_mute">Mut</string>
+    <string name="label_vehicle_balance">Balans (stânga / dreapta)</string>
+    <string name="label_vehicle_fade">Fader (față / spate)</string>
+    <string name="label_vehicle_bass">Bas</string>
+    <string name="label_vehicle_middle">Medii</string>
+    <string name="label_vehicle_treble">Înalte</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Nivelul subwooferului</string>
+    <string name="label_vehicle_sub_switch">Ieșire subwoofer</string>
+    <string name="label_vehicle_ext_amp">Activează amplificatorul extern</string>
+    <string name="desc_vehicle_volume">Volumul general al procesorului audio al unității multimedia, după Android și ViPER. Se aplică tuturor surselor.</string>
+    <string name="desc_vehicle_fader">Distribuie sunetul între cele patru difuzoare. O face procesorul audio al unității multimedia, după Android și ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balans&lt;/b&gt; — stânga / dreapta.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — față / spate.</string>
+    <string name="desc_vehicle_tone">Bas, medii și înalte ale procesorului audio al unității multimedia (2 dB pe treaptă). Se aplică tuturor surselor, spre deosebire de efectele ViPER, care procesează doar sunetul Android.</string>
+    <string name="desc_vehicle_sub">Loudness (bas și înalte întărite la volum mic), ieșire subwoofer (trece-jos la 120 Hz) și nivelul subwooferului (−5 până la +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Pornește ieșirea de comandă (REM) care alimentează un amplificator extern, de obicei firul albastru/alb din cablaj. LibreHU-service o pornește odată cu contactul când e activată.</string>
+</resources>

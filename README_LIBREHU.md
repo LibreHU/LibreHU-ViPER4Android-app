@@ -63,6 +63,7 @@ alors que les effets ViPER ne traitent que l'audio d'Android.
 | `keystore/` | clé de signature commune et son README |
 | `.github/workflows/build.yml` | CI : APK signé, pré-version roulante par branche avec `release.txt` (version lue par LibreHU OTA), 15 dernières versions gardées |
 | `README.md`, `docs/screenshots/main.png` | section de captures d'écran |
+| `app/src/main/res/values-<langue>/strings*.xml` | **traductions** dans les 18 langues d'Open Headunit (es, it, pt-PT, pt-BR, nl, cs, ro, ru, uk, tr, ko, zh-CN, zh-TW, vi, th, hi, id, ka) et en français : interface, écran Audio véhicule, entrée des Paramètres d'Android et aide des effets ; ru et zh-CN complètent celles de l'amont. Traduites par IA (Claude) : corrections bienvenues (issue ou pull request) |
 | `.gitignore` | sorties de build |
 
 ## Root : demandé une fois pour toutes

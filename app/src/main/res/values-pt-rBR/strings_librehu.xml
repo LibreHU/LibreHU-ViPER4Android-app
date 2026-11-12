@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Portuguese (Brazil) translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="librehu_settings_summary">Efeitos de áudio do Android: equalizador, graves, surround</string>
+</resources>

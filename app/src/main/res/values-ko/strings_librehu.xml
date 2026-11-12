@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Korean translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="librehu_settings_summary">Android 오디오 효과: 이퀄라이저, 베이스, 서라운드</string>
+</resources>

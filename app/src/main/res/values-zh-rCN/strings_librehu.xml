@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chinese (Simplified) translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="librehu_settings_summary">Android 音效：均衡器、低音、环绕声</string>
+</resources>

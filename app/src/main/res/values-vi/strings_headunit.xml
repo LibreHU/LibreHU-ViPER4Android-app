@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vietnamese translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Âm thanh xe</string>
+    <string name="vehicle_open">Âm thanh xe</string>
+    <string name="vehicle_back">Quay lại</string>
+    <string name="vehicle_reload">Đọc lại từ màn hình ô tô</string>
+    <string name="vehicle_reset">Giá trị mặc định</string>
+    <string name="vehicle_center">Căn giữa</string>
+    <string name="vehicle_not_supported">Không tìm thấy LibreHU-service. Màn hình này điều chỉnh bộ xử lý âm thanh của màn hình ô tô Jancar / Autochips (ROHM BD37534) thông qua LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">Đang kết nối với LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service không điều khiển phần cứng (%1$s). Cài đặt được lưu và áp dụng khi dịch vụ khởi động. Nếu ivi-services của Jancar vẫn đang bật, hãy tắt chúng: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Đã tắt máy: bộ xử lý âm thanh vẫn im lặng.</string>
+    <string name="section_vehicle_volume">Âm lượng</string>
+    <string name="section_vehicle_fader">Fader / cân bằng</string>
+    <string name="section_vehicle_tone">Âm sắc</string>
+    <string name="section_vehicle_sub">Loudness và loa siêu trầm</string>
+    <string name="section_vehicle_ext_amp">Ampli ngoài</string>
+    <string name="label_vehicle_volume">Âm lượng tổng</string>
+    <string name="label_vehicle_mute">Tắt tiếng</string>
+    <string name="label_vehicle_balance">Cân bằng (trái / phải)</string>
+    <string name="label_vehicle_fade">Fader (trước / sau)</string>
+    <string name="label_vehicle_bass">Âm trầm</string>
+    <string name="label_vehicle_middle">Âm trung</string>
+    <string name="label_vehicle_treble">Âm cao</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Mức loa siêu trầm</string>
+    <string name="label_vehicle_sub_switch">Ngõ ra loa siêu trầm</string>
+    <string name="label_vehicle_ext_amp">Bật ampli công suất ngoài</string>
+    <string name="desc_vehicle_volume">Âm lượng tổng của bộ xử lý âm thanh màn hình ô tô, sau Android và ViPER. Áp dụng cho mọi nguồn.</string>
+    <string name="desc_vehicle_fader">Phân bổ âm thanh giữa bốn loa. Việc này do bộ xử lý âm thanh của màn hình ô tô thực hiện, sau Android và ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Cân bằng&lt;/b&gt; — trái / phải.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — trước / sau.</string>
+    <string name="desc_vehicle_tone">Chỉnh âm trầm, âm trung và âm cao của bộ xử lý âm thanh màn hình ô tô (2 dB mỗi nấc). Áp dụng cho mọi nguồn, khác với hiệu ứng ViPER chỉ xử lý âm thanh Android.</string>
+    <string name="desc_vehicle_sub">Loudness (tăng âm trầm và âm cao khi âm lượng nhỏ), ngõ ra loa siêu trầm (thông thấp 120 Hz) và mức loa siêu trầm (−5 đến +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Bật ngõ ra điều khiển (REM) để khởi động ampli ngoài, thường là dây xanh/trắng của bó dây. Khi được bật, LibreHU-service bật nó cùng lúc với chìa khóa.</string>
+</resources>

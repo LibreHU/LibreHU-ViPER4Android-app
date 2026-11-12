@@ -104,7 +104,7 @@
     <string name="label_dynamic_system_side_gain_high">Gain latéral haut</string>
     <string name="section_tube_simulator">Simulateur de lampes</string>
     <string name="label_tube_model">Modèle de lampe</string>
-    <string name="label_tube_drive">Attaque</string>
+    <string name="label_tube_drive">Saturation</string>
     <string name="label_tube_mix">Mélange traité / direct</string>
     <string name="section_psycho_bass">Basses psychoacoustiques</string>
     <string name="label_psycho_bass_cutoff">Coupure</string>

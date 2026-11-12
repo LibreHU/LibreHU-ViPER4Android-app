@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hindi translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">वाहन ऑडियो</string>
+    <string name="vehicle_open">वाहन ऑडियो</string>
+    <string name="vehicle_back">वापस</string>
+    <string name="vehicle_reload">हेड यूनिट से फिर पढ़ें</string>
+    <string name="vehicle_reset">डिफ़ॉल्ट मान</string>
+    <string name="vehicle_center">बीच में करें</string>
+    <string name="vehicle_not_supported">LibreHU-service नहीं मिली। यह स्क्रीन LibreHU-service के ज़रिए Jancar / Autochips हेड यूनिट (ROHM BD37534) का ऑडियो प्रोसेसर नियंत्रित करती है: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">LibreHU-service से कनेक्ट हो रहा है…</string>
+    <string name="vehicle_not_running">LibreHU-service हार्डवेयर नियंत्रित नहीं कर रही (%1$s)। सेटिंग्स सहेजी जाती हैं और उसके शुरू होने पर लागू होती हैं। अगर Jancar के ivi-services अब भी चालू हैं, तो उन्हें बंद करें: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">इग्निशन बंद: ऑडियो प्रोसेसर म्यूट रहता है।</string>
+    <string name="section_vehicle_volume">वॉल्यूम</string>
+    <string name="section_vehicle_fader">फ़ेडर / बैलेंस</string>
+    <string name="section_vehicle_tone">टोन</string>
+    <string name="section_vehicle_sub">लाउडनेस और सबवूफ़र</string>
+    <string name="section_vehicle_ext_amp">बाहरी एम्पलीफ़ायर</string>
+    <string name="label_vehicle_volume">मास्टर वॉल्यूम</string>
+    <string name="label_vehicle_mute">म्यूट</string>
+    <string name="label_vehicle_balance">बैलेंस (बायाँ / दायाँ)</string>
+    <string name="label_vehicle_fade">फ़ेडर (आगे / पीछे)</string>
+    <string name="label_vehicle_bass">बेस</string>
+    <string name="label_vehicle_middle">मिडिल</string>
+    <string name="label_vehicle_treble">ट्रेबल</string>
+    <string name="label_vehicle_loudness">लाउडनेस</string>
+    <string name="label_vehicle_subwoofer">सबवूफ़र स्तर</string>
+    <string name="label_vehicle_sub_switch">सबवूफ़र आउटपुट</string>
+    <string name="label_vehicle_ext_amp">बाहरी पावर एम्पलीफ़ायर चालू करें</string>
+    <string name="desc_vehicle_volume">हेड यूनिट के ऑडियो प्रोसेसर का मास्टर वॉल्यूम, Android और ViPER के बाद। यह हर स्रोत पर लागू होता है।</string>
+    <string name="desc_vehicle_fader">आवाज़ को चारों स्पीकरों में बाँटता है। यह काम Android और ViPER के बाद हेड यूनिट का ऑडियो प्रोसेसर करता है।&lt;br&gt;&lt;br&gt;• &lt;b&gt;बैलेंस&lt;/b&gt; — बायाँ / दायाँ।&lt;br&gt;• &lt;b&gt;फ़ेडर&lt;/b&gt; — आगे / पीछे।</string>
+    <string name="desc_vehicle_tone">हेड यूनिट के ऑडियो प्रोसेसर के बेस, मिडिल और ट्रेबल नियंत्रण (हर कदम 2 dB)। ये हर स्रोत पर लागू होते हैं, जबकि ViPER इफ़ेक्ट सिर्फ़ Android का ऑडियो प्रोसेस करते हैं।</string>
+    <string name="desc_vehicle_sub">लाउडनेस (कम वॉल्यूम पर बेस और ट्रेबल बढ़ाना), सबवूफ़र आउटपुट (120 Hz पर लो-पास) और सबवूफ़र स्तर (−5 से +7 dB)।</string>
+    <string name="desc_vehicle_ext_amp">रिमोट (REM) आउटपुट चालू करता है जो बाहरी एम्पलीफ़ायर को चालू करता है, आम तौर पर हार्नेस का नीला/सफ़ेद तार। चालू होने पर LibreHU-service इसे इग्निशन के साथ चालू करती है।</string>
+</resources>

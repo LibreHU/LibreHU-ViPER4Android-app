@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Turkish translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Araç sesi</string>
+    <string name="vehicle_open">Araç sesi</string>
+    <string name="vehicle_back">Geri</string>
+    <string name="vehicle_reload">Multimedya ünitesinden yeniden oku</string>
+    <string name="vehicle_reset">Varsayılan değerler</string>
+    <string name="vehicle_center">Ortala</string>
+    <string name="vehicle_not_supported">LibreHU-service bulunamadı. Bu ekran, bir Jancar / Autochips multimedya ünitesinin ses işlemcisini (ROHM BD37534) LibreHU-service üzerinden ayarlar: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">LibreHU-service\'e bağlanılıyor…</string>
+    <string name="vehicle_not_running">LibreHU-service donanımı yönetmiyor (%1$s). Ayarlar kaydedilir ve hizmet başlayınca uygulanır. Jancar ivi-services hâlâ etkinse devre dışı bırakın: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Kontak kapalı: ses işlemcisi sessiz kalır.</string>
+    <string name="section_vehicle_volume">Ses düzeyi</string>
+    <string name="section_vehicle_fader">Fader / balans</string>
+    <string name="section_vehicle_tone">Ton</string>
+    <string name="section_vehicle_sub">Loudness ve subwoofer</string>
+    <string name="section_vehicle_ext_amp">Harici amfi</string>
+    <string name="label_vehicle_volume">Ana ses düzeyi</string>
+    <string name="label_vehicle_mute">Sessiz</string>
+    <string name="label_vehicle_balance">Balans (sol / sağ)</string>
+    <string name="label_vehicle_fade">Fader (ön / arka)</string>
+    <string name="label_vehicle_bass">Bas</string>
+    <string name="label_vehicle_middle">Orta</string>
+    <string name="label_vehicle_treble">Tiz</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Subwoofer düzeyi</string>
+    <string name="label_vehicle_sub_switch">Subwoofer çıkışı</string>
+    <string name="label_vehicle_ext_amp">Harici amfiyi etkinleştir</string>
+    <string name="desc_vehicle_volume">Multimedya ünitesinin ses işlemcisinin ana ses düzeyi; Android ve ViPER\'den sonra gelir. Tüm kaynaklara uygulanır.</string>
+    <string name="desc_vehicle_fader">Sesi dört hoparlör arasında dağıtır. Bunu Android ve ViPER\'den sonra multimedya ünitesinin ses işlemcisi yapar.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balans&lt;/b&gt; — sol / sağ.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — ön / arka.</string>
+    <string name="desc_vehicle_tone">Multimedya ünitesinin ses işlemcisinin bas, orta ve tiz ayarları (adım başına 2 dB). Yalnızca Android sesini işleyen ViPER efektlerinin aksine tüm kaynaklara uygulanır.</string>
+    <string name="desc_vehicle_sub">Loudness (düşük seste güçlendirilmiş bas ve tiz), subwoofer çıkışı (120 Hz alçak geçiren) ve subwoofer düzeyi (−5 ile +7 dB arası).</string>
+    <string name="desc_vehicle_ext_amp">Harici bir amfiyi çalıştıran kumanda çıkışını (REM) açar; genellikle kablo demetinin mavi/beyaz kablosudur. Etkinse LibreHU-service onu kontakla birlikte açar.</string>
+</resources>

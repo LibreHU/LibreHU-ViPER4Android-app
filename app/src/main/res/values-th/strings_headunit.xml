@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Thai translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">เสียงรถยนต์</string>
+    <string name="vehicle_open">เสียงรถยนต์</string>
+    <string name="vehicle_back">ย้อนกลับ</string>
+    <string name="vehicle_reload">อ่านใหม่จากจอติดรถยนต์</string>
+    <string name="vehicle_reset">ค่าเริ่มต้น</string>
+    <string name="vehicle_center">กึ่งกลาง</string>
+    <string name="vehicle_not_supported">ไม่พบ LibreHU-service หน้าจอนี้ปรับตัวประมวลผลเสียงของจอติดรถยนต์ Jancar / Autochips (ROHM BD37534) ผ่าน LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">กำลังเชื่อมต่อกับ LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service ไม่ได้ควบคุมฮาร์ดแวร์ (%1$s) การตั้งค่าจะถูกบันทึกและนำไปใช้เมื่อบริการเริ่มทำงาน หาก ivi-services ของ Jancar ยังเปิดอยู่ ให้ปิด: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">ดับเครื่องอยู่: ตัวประมวลผลเสียงยังคงปิดเสียง</string>
+    <string name="section_vehicle_volume">ระดับเสียง</string>
+    <string name="section_vehicle_fader">เฟดเดอร์ / บาลานซ์</string>
+    <string name="section_vehicle_tone">โทนเสียง</string>
+    <string name="section_vehicle_sub">ลาวด์เนสและซับวูฟเฟอร์</string>
+    <string name="section_vehicle_ext_amp">แอมป์ภายนอก</string>
+    <string name="label_vehicle_volume">ระดับเสียงหลัก</string>
+    <string name="label_vehicle_mute">ปิดเสียง</string>
+    <string name="label_vehicle_balance">บาลานซ์ (ซ้าย / ขวา)</string>
+    <string name="label_vehicle_fade">เฟดเดอร์ (หน้า / หลัง)</string>
+    <string name="label_vehicle_bass">เสียงต่ำ</string>
+    <string name="label_vehicle_middle">เสียงกลาง</string>
+    <string name="label_vehicle_treble">เสียงสูง</string>
+    <string name="label_vehicle_loudness">ลาวด์เนส</string>
+    <string name="label_vehicle_subwoofer">ระดับซับวูฟเฟอร์</string>
+    <string name="label_vehicle_sub_switch">เอาต์พุตซับวูฟเฟอร์</string>
+    <string name="label_vehicle_ext_amp">เปิดใช้แอมป์ภายนอก</string>
+    <string name="desc_vehicle_volume">ระดับเสียงหลักของตัวประมวลผลเสียงในจอติดรถยนต์ ต่อจาก Android และ ViPER ใช้กับทุกแหล่งเสียง</string>
+    <string name="desc_vehicle_fader">กระจายเสียงไปยังลำโพงทั้งสี่ตัว ตัวประมวลผลเสียงของจอติดรถยนต์เป็นผู้ทำ ต่อจาก Android และ ViPER&lt;br&gt;&lt;br&gt;• &lt;b&gt;บาลานซ์&lt;/b&gt; — ซ้าย / ขวา&lt;br&gt;• &lt;b&gt;เฟดเดอร์&lt;/b&gt; — หน้า / หลัง</string>
+    <string name="desc_vehicle_tone">ปรับเสียงต่ำ เสียงกลาง และเสียงสูงของตัวประมวลผลเสียงในจอติดรถยนต์ (ขั้นละ 2 dB) ใช้กับทุกแหล่งเสียง ต่างจากเอฟเฟกต์ ViPER ที่ประมวลผลเฉพาะเสียงของ Android</string>
+    <string name="desc_vehicle_sub">ลาวด์เนส (เพิ่มเสียงต่ำและสูงเมื่อเปิดเบา) เอาต์พุตซับวูฟเฟอร์ (โลว์พาส 120 Hz) และระดับซับวูฟเฟอร์ (−5 ถึง +7 dB)</string>
+    <string name="desc_vehicle_ext_amp">เปิดเอาต์พุตสั่งงาน (REM) ที่สั่งให้แอมป์ภายนอกทำงาน มักเป็นสายสีน้ำเงิน/ขาวของชุดสายไฟ เมื่อเปิดใช้ LibreHU-service จะเปิดพร้อมกับการบิดกุญแจ</string>
+</resources>

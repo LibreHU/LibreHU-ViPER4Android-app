@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hindi translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="librehu_settings_summary">Android ऑडियो इफ़ेक्ट: इक्वलाइज़र, बेस, सराउंड</string>
+</resources>

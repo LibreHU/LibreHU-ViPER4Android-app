@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chinese (Traditional) translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">車輛音訊</string>
+    <string name="vehicle_open">車輛音訊</string>
+    <string name="vehicle_back">返回</string>
+    <string name="vehicle_reload">從車機重新讀取</string>
+    <string name="vehicle_reset">還原預設值</string>
+    <string name="vehicle_center">置中</string>
+    <string name="vehicle_not_supported">找不到 LibreHU-service。這個畫面透過 LibreHU-service 調整 Jancar / Autochips 車機的音訊處理器（ROHM BD37534）：https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">正在連線到 LibreHU-service…</string>
+    <string name="vehicle_not_running">LibreHU-service 沒有在控制硬體（%1$s）。設定會被儲存，並在它啟動時套用。如果 Jancar 的 ivi-services 仍在執行，請將其停用：adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">點火已關閉：音訊處理器保持靜音。</string>
+    <string name="section_vehicle_volume">音量</string>
+    <string name="section_vehicle_fader">前後 / 左右平衡</string>
+    <string name="section_vehicle_tone">音調</string>
+    <string name="section_vehicle_sub">響度與重低音</string>
+    <string name="section_vehicle_ext_amp">外接擴大機</string>
+    <string name="label_vehicle_volume">主音量</string>
+    <string name="label_vehicle_mute">靜音</string>
+    <string name="label_vehicle_balance">左右平衡（左 / 右）</string>
+    <string name="label_vehicle_fade">前後平衡（前 / 後）</string>
+    <string name="label_vehicle_bass">低音</string>
+    <string name="label_vehicle_middle">中音</string>
+    <string name="label_vehicle_treble">高音</string>
+    <string name="label_vehicle_loudness">響度</string>
+    <string name="label_vehicle_subwoofer">重低音電平</string>
+    <string name="label_vehicle_sub_switch">重低音輸出</string>
+    <string name="label_vehicle_ext_amp">啟用外接擴大機</string>
+    <string name="desc_vehicle_volume">車機音訊處理器的主音量，位於 Android 和 ViPER 之後。適用於所有音源。</string>
+    <string name="desc_vehicle_fader">在四個喇叭之間分配聲音。由車機音訊處理器在 Android 和 ViPER 之後處理。&lt;br&gt;&lt;br&gt;• &lt;b&gt;左右平衡&lt;/b&gt; — 左 / 右。&lt;br&gt;• &lt;b&gt;前後平衡&lt;/b&gt; — 前 / 後。</string>
+    <string name="desc_vehicle_tone">車機音訊處理器的低音、中音與高音調整（每段 2 dB）。適用於所有音源，而 ViPER 效果只處理 Android 的音訊。</string>
+    <string name="desc_vehicle_sub">響度（小音量時加強低音與高音）、重低音輸出（120 Hz 低通）與重低音電平（−5 至 +7 dB）。</string>
+    <string name="desc_vehicle_ext_amp">開啟遙控（REM）輸出以啟動外接擴大機，通常是線組中的藍/白線。啟用後，LibreHU-service 會隨點火一起開啟它。</string>
+</resources>

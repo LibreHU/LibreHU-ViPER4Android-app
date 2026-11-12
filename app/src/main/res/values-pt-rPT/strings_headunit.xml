@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Portuguese (Portugal) translation (LibreHU). Corrections welcome: https://github.com/LibreHU -->
+<resources>
+    <string name="vehicle_title">Áudio do veículo</string>
+    <string name="vehicle_open">Áudio do veículo</string>
+    <string name="vehicle_back">Voltar</string>
+    <string name="vehicle_reload">Voltar a ler do autorrádio</string>
+    <string name="vehicle_reset">Valores predefinidos</string>
+    <string name="vehicle_center">Centrar</string>
+    <string name="vehicle_not_supported">LibreHU-service não encontrado. Este ecrã regula o processador de áudio de um autorrádio Jancar / Autochips (ROHM BD37534) através do LibreHU-service: https://github.com/LibreHU/LibreHU-service</string>
+    <string name="vehicle_connecting">A ligar ao LibreHU-service…</string>
+    <string name="vehicle_not_running">O LibreHU-service não controla o hardware (%1$s). As definições são guardadas e aplicadas quando ele arranca. Se os ivi-services da Jancar ainda estiverem ativos, desative-os: adb shell pm disable-user --user 0 com.jancar.services</string>
+    <string name="vehicle_acc_off">Ignição desligada: o processador de áudio fica em silêncio.</string>
+    <string name="section_vehicle_volume">Volume</string>
+    <string name="section_vehicle_fader">Fader / balanço</string>
+    <string name="section_vehicle_tone">Tonalidade</string>
+    <string name="section_vehicle_sub">Loudness e subwoofer</string>
+    <string name="section_vehicle_ext_amp">Amplificador externo</string>
+    <string name="label_vehicle_volume">Volume geral</string>
+    <string name="label_vehicle_mute">Silêncio</string>
+    <string name="label_vehicle_balance">Balanço (esquerda / direita)</string>
+    <string name="label_vehicle_fade">Fader (frente / trás)</string>
+    <string name="label_vehicle_bass">Graves</string>
+    <string name="label_vehicle_middle">Médios</string>
+    <string name="label_vehicle_treble">Agudos</string>
+    <string name="label_vehicle_loudness">Loudness</string>
+    <string name="label_vehicle_subwoofer">Nível do subwoofer</string>
+    <string name="label_vehicle_sub_switch">Saída do subwoofer</string>
+    <string name="label_vehicle_ext_amp">Ativar o amplificador externo</string>
+    <string name="desc_vehicle_volume">Volume geral do processador de áudio do autorrádio, depois do Android e do ViPER. Aplica-se a todas as fontes.</string>
+    <string name="desc_vehicle_fader">Distribui o som pelos quatro altifalantes. É o processador de áudio do autorrádio que o faz, depois do Android e do ViPER.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Balanço&lt;/b&gt; — esquerda / direita.&lt;br&gt;• &lt;b&gt;Fader&lt;/b&gt; — frente / trás.</string>
+    <string name="desc_vehicle_tone">Graves, médios e agudos do processador de áudio do autorrádio (2 dB por passo). Aplicam-se a todas as fontes, ao contrário dos efeitos do ViPER, que só processam o áudio do Android.</string>
+    <string name="desc_vehicle_sub">Loudness (graves e agudos reforçados a baixo volume), saída do subwoofer (passa-baixo a 120 Hz) e nível do subwoofer (−5 a +7 dB).</string>
+    <string name="desc_vehicle_ext_amp">Liga a saída de comando (REM) que põe a funcionar um amplificador externo, normalmente o fio azul/branco da cablagem. O LibreHU-service liga-a com a ignição quando está ativada.</string>
+</resources>
