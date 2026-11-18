@@ -40,7 +40,7 @@ android {
         minSdk = 28
         targetSdk = 37
         versionCode = git("rev-list", "--count", "HEAD")?.toIntOrNull() ?: 1
-        versionName = "2.1.1-librehu." + (git("describe", "--tags", "--always", "--dirty", "--exclude", "latest-*", "--exclude", "build-*") ?: "dev") + "-" + branchName()
+        versionName = "2.1.2-librehu." + (git("describe", "--tags", "--always", "--dirty", "--exclude", "latest-*", "--exclude", "build-*") ?: "dev") + "-" + branchName()
     }
 
     androidResources {
