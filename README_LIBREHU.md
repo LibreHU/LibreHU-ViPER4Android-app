@@ -86,8 +86,9 @@ L'appli envoie au démarrage et à chaque remise sur ON tout son état d'un bloc
 `viper::ViPERParams`). Le pilote ViPERFX_RE le refuse si la taille diffère de la sienne
 (`value.byte_count != sizeof(viper::ViPERParams)` dans `ViPER.cpp`) : aucun effet n'est alors appliqué, et seuls
 les réglages touchés un par un passent. L'appli et le pilote doivent donc être de la même version. Le zip
-`viper4android-re` de LibreHU-flashablesZips installe le pilote **v2.1.1** (structure de 1156 octets, avec le
-« quadric tube simulator ») : l'appli suit l'amont jusqu'à la 2.1.1 (`dfcbda7`). Une appli restée en 2.1.0
+`viper4android-re` de LibreHU-flashablesZips et le zip des ROM LineageOS installent le pilote **v2.1.2** (18/11/2026 ;
+structure de 1156 octets, avec le « quadric tube simulator », la même qu'en 2.1.1 : la 2.1.2 ne corrige que Pure Bass+) :
+l'appli suit l'amont jusqu'à la 2.1.2 (`99dcea9`). Une appli restée en 2.1.0
 (1144 octets) donnait « effets cochés mais non appliqués » après un redémarrage ou un OFF / ON.
 
 ## Suivre l'amont
