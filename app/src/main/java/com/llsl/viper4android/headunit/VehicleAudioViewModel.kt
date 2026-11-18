@@ -105,6 +105,8 @@ class VehicleAudioViewModel
                             try {
                                 op(s)
                             } catch (_: RemoteException) {
+                            } catch (_: SecurityException) {
+                                // refused by LibreHU-service (its Access page): no head unit settings, no crash
                             }
                         }
                         delay(SEND_INTERVAL_MS)
@@ -146,6 +148,8 @@ class VehicleAudioViewModel
                         )
                     }
                 } catch (_: RemoteException) {
+                } catch (_: SecurityException) {
+                    // refused by LibreHU-service (its Access page): no head unit settings, no crash
                 }
             }
         }
@@ -198,6 +202,8 @@ class VehicleAudioViewModel
             try {
                 block(s)
             } catch (_: RemoteException) {
+            } catch (_: SecurityException) {
+                // refused by LibreHU-service (its Access page): no head unit settings, no crash
             }
         }
 
