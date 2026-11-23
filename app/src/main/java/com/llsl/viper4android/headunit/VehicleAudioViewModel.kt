@@ -32,6 +32,18 @@ data class HuAudio(
     val subwoofer: Boolean = false,
     val subLevel: Int = 6,
     val externalAmp: Boolean = false,
+    /** Gain of the sound processor's Android input, dB (LibreHU-service API 9). */
+    val androidGain: Int = 0,
+)
+
+/** Board of the head unit as LibreHU-service detects it (API 9, kernel board id). */
+data class HuBoard(
+    val boardId: String = "",
+    val chip: String = "",
+    /** False when LibreHU-service does not drive this board's sound processor yet. */
+    val supported: Boolean = true,
+    /** Gain Jancar's firmware sets on the Android input of this board, dB. */
+    val jancarAndroidGain: Int = 4,
 )
 
 data class VehicleAudioState(
@@ -41,6 +53,9 @@ data class VehicleAudioState(
     val running: Boolean = false,
     val acc: Boolean = false,
     val audio: HuAudio = HuAudio(),
+    /** LibreHU-service API 9 or later: Android input gain and board info available. */
+    val api9: Boolean = false,
+    val board: HuBoard? = null,
 )
 
 @HiltViewModel
@@ -124,6 +139,17 @@ class VehicleAudioViewModel
                     val bf = s.balanceFade
                     val flags = s.vehicleFlags
                     val status = s.status
+                    val api9 = s.apiVersion >= 9
+                    val info = if (api9) s.boardInfo else null
+                    val board =
+                        info?.let {
+                            HuBoard(
+                                boardId = it.getString("boardId").orEmpty(),
+                                chip = it.getString("chip").orEmpty(),
+                                supported = it.getBoolean("supported", true),
+                                jancarAndroidGain = it.getInt("jancarAndroidGain", 4),
+                            )
+                        }
                     val audio =
                         HuAudio(
                             volume = s.volume,
@@ -138,6 +164,7 @@ class VehicleAudioViewModel
                             subwoofer = s.isSubwooferOn,
                             subLevel = s.subwooferLevel,
                             externalAmp = s.isExternalAmpEnabled,
+                            androidGain = if (api9) s.androidInputGain else 0,
                         )
                     _state.update {
                         it.copy(
@@ -145,6 +172,8 @@ class VehicleAudioViewModel
                             running = status.startsWith("RUNNING"),
                             acc = flags and LibreHuClient.FLAG_ACC != 0,
                             audio = audio,
+                            api9 = api9,
+                            board = board,
                         )
                     }
                 } catch (_: RemoteException) {
@@ -187,6 +216,8 @@ class VehicleAudioViewModel
             on: Boolean,
             level: Int,
         ) = edit("sub", { it.copy(subwoofer = on, subLevel = level) }) { it.setSubwoofer(on, level) }
+
+        fun setAndroidGain(db: Int) = edit("gain", { it.copy(androidGain = db) }) { it.setAndroidInputGain(db) }
 
         fun setExternalAmp(on: Boolean) = edit("amp", { it.copy(externalAmp = on) }) { it.setExternalAmpEnabled(on) }
 

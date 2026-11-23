@@ -42,9 +42,9 @@ Le suivi du thème du launcher avait été essayé sur `main` (`2044b76`) puis r
 | Fichier | Modification |
 |---|---|
 | `app/src/main/java/com/llsl/viper4android/headunit/VehicleAudioScreen.kt` | écran **Audio véhicule** : volume maître et sourdine, balance / fader, graves / médiums / aigus (pas de 2 dB), loudness, sortie et niveau caisson (−5 à +7 dB), interrupteur de l'ampli externe (sortie REM), recharger depuis l'autoradio, valeurs par défaut |
-| `…/headunit/VehicleAudioViewModel.kt` | état de l'écran, lecture / écriture des réglages par le service ; bandes d'égaliseur inexistantes de la ROHM BD37534 masquées |
+| `…/headunit/VehicleAudioViewModel.kt` | état de l'écran, lecture / écriture des réglages par le service ; bandes d'égaliseur inexistantes de la ROHM BD37534 masquées ; API 9 : gain de l'entrée Android (0..+8 dB, 0 par défaut, valeur Jancar de la carte rappelée), carte et processeur de son détectés, avis si la puce n'est pas pilotée |
 | `…/headunit/LibreHuClient.kt` | liaison à LibreHU-service (`org.librehu.service`, AIDL) ; d'abord ivi-services de Jancar, remplacé par LibreHU-service |
-| `app/src/main/aidl/org/librehu/service/ILibreHuService.aidl`, `ILibreHuCallback.aidl` | copie de l'API publique de LibreHU-service |
+| `app/src/main/aidl/org/librehu/service/ILibreHuService.aidl`, `ILibreHuCallback.aidl` | copie de l'API publique de LibreHU-service (API 9 depuis le 23/11/2026 ; `getBluetooth` déclaré `IBinder` pour éviter les parcelables Bluetooth) |
 | `…/ui/navigation/ViperNavigation.kt`, `…/ui/screens/main/MainScreen.kt` | entrée « Audio véhicule » dans l'écran principal et sa route |
 | `app/src/main/res/values/strings_headunit.xml` | textes de l'écran (messages : service absent, service ne pilotant pas le matériel, contact coupé) |
 

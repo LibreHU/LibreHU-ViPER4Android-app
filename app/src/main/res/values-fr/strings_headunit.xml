@@ -31,4 +31,10 @@
     <string name="desc_vehicle_tone">Graves, médiums et aigus du processeur audio de l\'autoradio (2 dB par cran). Ils s\'appliquent à toutes les sources, alors que les effets ViPER ne traitent que le son d\'Android.</string>
     <string name="desc_vehicle_sub">Loudness (graves et aigus renforcés à bas volume), sortie caisson (passe-bas à 120 Hz) et niveau du caisson (−5 à +7 dB).</string>
     <string name="desc_vehicle_ext_amp">Allume la sortie de commande (REM) qui met en route un ampli externe, souvent le fil bleu / blanc du faisceau. LibreHU-service l\'allume avec le contact quand elle est activée.</string>
+    <string name="section_vehicle_android_gain">Gain de l\'entrée Android</string>
+    <string name="label_vehicle_android_gain">Gain</string>
+    <string name="desc_vehicle_android_gain">Gain analogique du processeur de son sur le son d\'Android (donc sur ce que sort ViPER), avant le volume. 0 dB par défaut : le plus de marge. La ROHM BD37534 accepte 2,1 Vrms au plus en entrée : au-delà de +3 dB, un morceau fort peut saturer à tout volume ; ne l\'augmenter que sans distorsion audible.</string>
+    <string name="vehicle_android_gain_jancar">Le firmware de Jancar met +%1$d dB sur cette carte.</string>
+    <string name="vehicle_board">Carte %1$s, processeur de son %2$s (détectés par LibreHU-service).</string>
+    <string name="vehicle_chip_not_supported">Processeur de son %1$s (carte %2$s) : pas encore piloté par LibreHU-service, ses réglages restent ceux par défaut de la puce.</string>
 </resources>

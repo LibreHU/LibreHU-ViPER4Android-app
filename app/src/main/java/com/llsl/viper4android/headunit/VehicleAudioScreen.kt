@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.SettingsBackupRestore
 import androidx.compose.material.icons.filled.SpeakerGroup
 import androidx.compose.material.icons.filled.SurroundSound
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -46,6 +47,7 @@ private const val FADER_MAX = 60
 private const val FADER_CENTER = 30
 private const val LOUDNESS_MAX = 15
 private const val SUB_MAX = 12
+private const val ANDROID_GAIN_MAX = 8
 
 /**
  * Settings of the head unit audio processor (after Android's mixer) through LibreHU-service: volume, fader,
@@ -122,6 +124,17 @@ private fun VehicleAudioContent(
         } else if (state.running && !state.acc) {
             item { StatusCard(stringResource(R.string.vehicle_acc_off)) }
         }
+        state.board?.let { b ->
+            item {
+                StatusCard(
+                    if (b.supported) {
+                        stringResource(R.string.vehicle_board, b.boardId.ifEmpty { "?" }, b.chip.ifEmpty { "?" })
+                    } else {
+                        stringResource(R.string.vehicle_chip_not_supported, b.chip.ifEmpty { "?" }, b.boardId.ifEmpty { "?" })
+                    },
+                )
+            }
+        }
         item { Spacer(modifier = Modifier.height(UiDimens.Medium)) }
 
         item {
@@ -162,6 +175,22 @@ private fun VehicleAudioContent(
                 // Level 0..12 = -5..+7 dB on board A0_AN.
                 IntSlider(stringResource(R.string.label_vehicle_subwoofer), a.subLevel, SUB_MAX, label = { signed(it - 5) + " dB" }) {
                     viewModel.setSubwoofer(a.subwoofer, it)
+                }
+            }
+        }
+
+        // LibreHU-service API 9: gain of the Android input, before the volume (BD37534 boards only)
+        if (state.api9 && state.board?.supported != false) {
+            item {
+                Section(R.string.section_vehicle_android_gain, R.string.desc_vehicle_android_gain, Icons.Default.Tune) {
+                    IntSlider(stringResource(R.string.label_vehicle_android_gain), a.androidGain, ANDROID_GAIN_MAX, label = { "+$it dB" }) {
+                        viewModel.setAndroidGain(it)
+                    }
+                    Text(
+                        text = stringResource(R.string.vehicle_android_gain_jancar, state.board?.jancarAndroidGain ?: 4),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
             }
         }

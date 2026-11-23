@@ -1,10 +1,15 @@
+// Copy of LibreHU-service's app/src/main/aidl/org/librehu/service/ILibreHuService.aidl (API 9, 23/11/2026).
+// Methods are only appended there: keep the same order, transaction codes follow it.
 package org.librehu.service;
+
+import android.os.Bundle;
 
 import org.librehu.service.ILibreHuCallback;
 
 /**
- * Public API of LibreHU-service (bind with action org.librehu.service.BIND, package org.librehu.service,
- * permission org.librehu.permission.HEADUNIT).
+ * Public API of LibreHU-service (bind with action org.librehu.service.BIND, package org.librehu.service).
+ * Access: LibreHU apps (org.librehu.*) are allowed automatically; any other app gets a SecurityException until the
+ * user allows it (notification, or LibreHU-service → Diagnostic → Access to the service).
  *
  * Vehicle flags: see the FLAG_* constants of org.librehu.service.LibreHu.
  * Ranges: volume 0..getMaxVolume(), tone 0..20 (10 = flat), balance/fade 0..60 (30 = centre, balance 0 = left,
@@ -51,4 +56,76 @@ interface ILibreHuService {
 
     void registerCallback(ILibreHuCallback callback);
     void unregisterCallback(ILibreHuCallback callback);
+
+    // --- API 2 (new methods go at the end to keep the transaction numbers of older clients) ---
+
+    /** Radio antenna power (GPIO 110 + MCU 0x43), requested by the radio app while it plays. Cut at ACC off. */
+    void setRadioAntenna(boolean on);
+    boolean isRadioAntennaOn();
+
+    // --- API 3 ---
+
+    /** Bluetooth (hands-free, music, phone book): see org.librehu.service.bt.ILibreHuBluetooth. */
+    IBinder getBluetooth(); // ILibreHuBluetooth in LibreHU-service; IBinder here (same transaction, no Bluetooth parcelables needed)
+
+    // --- API 4 ---
+
+    /**
+     * Last OBD-II values of the ELM327 adapter: keys = org.librehu.core.obd.ObdPid names (RPM, SPEED,
+     * COOLANT_TEMP…) plus "BATTERY" (adapter voltage), values = doubles. Empty when not connected.
+     */
+    Bundle getObdValues();
+    /** 0 off, 1 connecting, 2 initialising, 3 connected, 4 error. */
+    int getObdState();
+    /** Name of the MCU protocol profile in use. */
+    String getMcuProtocol();
+
+    // --- API 5 ---
+
+    /** Restarts the head unit through the MCU (power cycle of the SoC, MCU command 0E): works even when Android hangs. */
+    void resetSoc();
+
+    // --- API 6 ---
+
+    /** Input of the sound processor: 0 = Android (default at each start), 1 = AUX jack. */
+    void setAudioSource(int source);
+    int getAudioSource();
+
+    // --- API 7 ---
+
+    /**
+     * Runs a key action as the service's own keys do (name of org.librehu.core.touch.TouchAction: VOLUME_UP,
+     * VOLUME_DOWN, MUTE, PLAY_PAUSE, NEXT, PREVIOUS, VOICE_ASSISTANT...): to Android Auto during a session, to
+     * EasySource's picker and the sound menu while they show, else the usual action. For button apps (BtnRemap).
+     */
+    void runKeyAction(String action);
+
+    // --- API 8 ---
+
+    /**
+     * Car battery from the adapter's voltage: "voltage" (double, volts), "percent" (int, charge engine off, -1 engine
+     * running), "status" (ENGINE_OFF, CHARGING, NOT_CHARGING, OVERVOLTAGE). Empty when the adapter is not connected.
+     */
+    Bundle getObdBattery();
+    /**
+     * Manufacturer values chosen for the selected car: key "<ECU>/<value>" -> Bundle with "name", "ecu", "text" (as
+     * shown, with its unit), "unit", "number" (double, when scaled) and "error" (boolean). Empty when not connected.
+     */
+    Bundle getObdCarValues();
+
+    // --- API 9 ---
+
+    /**
+     * Gain of the Android input of the sound processor, dB (0..8, 0 by default). Jancar's firmware sets +4 dB on A0
+     * boards and +5 dB on A1 boards; the gain stage is before the volume and clips loud content at any volume when too
+     * high. Only the ROHM BD37534 boards (see getBoardInfo).
+     */
+    int getAndroidInputGain();
+    void setAndroidInputGain(int db);
+    /**
+     * Board of the head unit: "boardId" (String, empty when unknown), "known" (boolean), "platform" (ivi-services
+     * class), "chip" (ROHM BD37534, ROHM BU32107, AKM AK7604, empty), "supported" (boolean: LibreHU drives this chip),
+     * "jancarAndroidGain" (int, dB), "iviConfigSection" (String), "tuner" (T, W, empty).
+     */
+    Bundle getBoardInfo();
 }

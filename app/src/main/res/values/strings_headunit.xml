@@ -35,4 +35,10 @@
     <string name="desc_vehicle_tone">Bass, middle and treble controls of the head unit audio processor (2 dB per step). They apply to every source, unlike ViPER effects which only process Android audio.</string>
     <string name="desc_vehicle_sub">Loudness (bass and treble boost at low volume), subwoofer output (low-pass at 120 Hz) and subwoofer level (−5 to +7 dB).</string>
     <string name="desc_vehicle_ext_amp">Turns on the remote (REM) output that powers up an external amplifier, usually the blue/white wire of the harness. LibreHU-service switches it on with the ignition when enabled.</string>
+    <string name="section_vehicle_android_gain">Android input gain</string>
+    <string name="label_vehicle_android_gain">Gain</string>
+    <string name="desc_vehicle_android_gain">Analog gain of the sound processor on Android\'s audio (and so on what ViPER outputs), before the volume. 0 dB by default: the most headroom. The ROHM BD37534 takes 2.1 Vrms at most on its input, so above +3 dB a loud song can distort at any volume: raise it only if no distortion is heard.</string>
+    <string name="vehicle_android_gain_jancar">Jancar\'s firmware sets +%1$d dB on this board.</string>
+    <string name="vehicle_board">Board %1$s, sound processor %2$s (detected by LibreHU-service).</string>
+    <string name="vehicle_chip_not_supported">Sound processor %1$s (board %2$s): not driven by LibreHU-service yet, its settings stay at the chip defaults.</string>
 </resources>
